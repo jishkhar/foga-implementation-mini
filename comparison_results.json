@@ -1,29 +1,29 @@
 {
-  "timestamp": "2025-12-03T19:30:31.477136",
-  "source_file": "benchmarks/matrix_multiply.c",
+  "timestamp": "2025-12-03T21:03:14.441073",
+  "source_file": "uploads/154e5c64-9b46-4730-a423-1d3856ad731f_matrix_multiply.c",
   "baseline": {
-    "-O1": 0.0017359256744384766,
-    "-O2": 0.0017423629760742188,
-    "-O3": 0.0016469955444335938
+    "-O1": 0.0015408992767333984,
+    "-O2": 0.001722097396850586,
+    "-O3": 0.001703023910522461
   },
   "FOGA": {
-    "best_time": 0.001429,
-    "total_time": 188.42232465744019,
+    "best_time": 0.001408,
+    "total_time": 188.8021059036255,
     "evaluations": 10
   },
   "HBRF": {
     "best_time": Infinity,
-    "total_time": 0.09887075424194336,
+    "total_time": 0.10364747047424316,
     "evaluations": 0
   },
   "XGBOOST": {
     "best_time": Infinity,
-    "total_time": 0.09745526313781738,
+    "total_time": 0.11432433128356934,
     "evaluations": 0
   },
   "winner": "FOGA",
   "improvements": {
-    "FOGA_vs_O3": 13.235952287203249,
+    "FOGA_vs_O3": 17.323533081338375,
     "HBRF_vs_O3": 0,
     "XGBOOST_vs_O3": 0
   }

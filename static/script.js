@@ -39,12 +39,13 @@ document.addEventListener('DOMContentLoaded', () => {
         // Reset UI
         runBtn.disabled = true;
         resultsPanel.style.display = 'block';
-        loadingState.style.display = 'block';
+        loadingState.style.display = 'none';
         resultsContent.innerHTML = '';
-        terminalOutput.style.display = 'none';
-        outputContent.textContent = '';
+        terminalOutput.style.display = 'block';
+        outputContent.textContent = 'Initializing optimization...\n';
         errorState.style.display = 'none';
         updateStatus('running');
+
 
         try {
             // 1. Get the file content first (we need to upload it)
@@ -102,6 +103,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             const job = await response.json();
+
+            // Start streaming output
+            startStreaming(job.job_id);
+
+            // Also poll for status to know when it's fully done (for results JSON)
             pollJobStatus(job.job_id);
 
         } catch (err) {
@@ -119,13 +125,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (job.status === 'completed') {
                     clearInterval(pollInterval);
                     updateStatus('completed');
-                    loadingState.style.display = 'none';
+                    // loadingState.style.display = 'none'; // Already hidden
                     showResults(job);
                     runBtn.disabled = false;
                 } else if (job.status === 'failed') {
                     clearInterval(pollInterval);
                     updateStatus('failed');
-                    loadingState.style.display = 'none';
+                    // loadingState.style.display = 'none'; // Already hidden
                     showError(job.error || 'Optimization failed');
                     runBtn.disabled = false;
                 }
@@ -135,6 +141,32 @@ document.addEventListener('DOMContentLoaded', () => {
                 runBtn.disabled = false;
             }
         }, 2000);
+    }
+
+    function startStreaming(jobId) {
+        const eventSource = new EventSource(`/jobs/${jobId}/stream`);
+
+        eventSource.onmessage = (event) => {
+            // Append new data to the terminal output
+            // outputContent.textContent += event.data + '\n'; // This might double newlines if data already has them
+            // The data from server is line-based.
+            outputContent.textContent += event.data;
+
+            // Auto-scroll to bottom
+            const terminalContainer = document.querySelector('.terminal-output');
+            if (terminalContainer) {
+                terminalContainer.scrollTop = terminalContainer.scrollHeight;
+            }
+        };
+
+        eventSource.addEventListener('close', () => {
+            eventSource.close();
+        });
+
+        eventSource.onerror = (err) => {
+            console.error('EventSource failed:', err);
+            eventSource.close();
+        };
     }
 
     function updateStatus(status) {
@@ -186,6 +218,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (job.output) {
             terminalOutput.style.display = 'block';
+            // We don't overwrite here because we might have streamed it.
+            // But to be safe, we can ensure it's fully consistent.
             outputContent.textContent = job.output;
         }
     }

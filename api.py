@@ -7,7 +7,7 @@ Provides RESTful API for running optimizations and retrieving results
 from fastapi import FastAPI, File, UploadFile, HTTPException, BackgroundTasks, Form
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse, FileResponse
+from fastapi.responses import JSONResponse, FileResponse, StreamingResponse
 from pydantic import BaseModel
 from typing import Optional, Dict, List
 import subprocess
@@ -119,18 +119,28 @@ def run_optimizer_task(job_id: str, optimizer: str, source_path: str, test_input
         if test_input_path:
             cmd.append(test_input_path)
         
+        # Prepare output file
+        output_file = RESULTS_DIR / f"{job_id}_output.txt"
+        
         # Run optimizer
         process = subprocess.Popen(
             cmd,
             stdout=subprocess.PIPE,
             stderr=subprocess.STDOUT,
             text=True,
-            bufsize=1
+            bufsize=1,
+            universal_newlines=True
         )
         
         output_lines = []
-        for line in process.stdout:
-            output_lines.append(line.rstrip())
+        
+        # Open file for writing in real-time
+        with open(output_file, 'w') as f:
+            for line in process.stdout:
+                line_content = line.rstrip()
+                output_lines.append(line_content)
+                f.write(line)
+                f.flush()  # Ensure it's written immediately
         
         process.wait(timeout=7200)  # 2 hour timeout
         output = "\n".join(output_lines)
@@ -147,11 +157,6 @@ def run_optimizer_task(job_id: str, optimizer: str, source_path: str, test_input
                 "output": output,
                 "result": result
             }, f, indent=2)
-        
-        # Save raw terminal output
-        output_file = RESULTS_DIR / f"{job_id}_output.txt"
-        with open(output_file, 'w') as f:
-            f.write(output)
         
         update_job_status(job_id, "completed", result=result, output=output)
         
@@ -565,6 +570,45 @@ async def health_check():
         "jobs_count": len(jobs),
         "active_jobs": len([j for j in jobs.values() if j["status"] in ["pending", "running"]])
     }
+
+
+@app.get("/jobs/{job_id}/stream")
+async def stream_job_output(job_id: str):
+    """Stream the output of a running job"""
+    if job_id not in jobs:
+        raise HTTPException(status_code=404, detail="Job not found")
+    
+    async def event_generator():
+        output_file = RESULTS_DIR / f"{job_id}_output.txt"
+        
+        # Wait for file to be created
+        retries = 0
+        while not output_file.exists():
+            if retries > 50: # 5 seconds
+                yield "data: Error: Output file not created\n\n"
+                return
+            time.sleep(0.1)
+            retries += 1
+            
+        # Tail the file
+        with open(output_file, 'r') as f:
+            while True:
+                line = f.readline()
+                if line:
+                    yield f"data: {line}"
+                else:
+                    # Check if job is done
+                    job = jobs[job_id]
+                    if job["status"] in ["completed", "failed"]:
+                        # Read any remaining lines
+                        rest = f.read()
+                        if rest:
+                            yield f"data: {rest}"
+                        yield "event: close\ndata: closed\n\n"
+                        break
+                    time.sleep(0.1)
+    
+    return StreamingResponse(event_generator(), media_type="text/event-stream")
 
 
 if __name__ == "__main__":

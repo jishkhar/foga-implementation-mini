@@ -1,0 +1,11 @@
+{
+  "job_id": "1be6ccf3-bb49-4939-aa11-e8c0eac99e57",
+  "optimizer": "hbrf_optimizer",
+  "output": "Warning: scikit-optimize not available. Install with: pip install scikit-optimize\nWarning: scikit-learn not available. Install with: pip install scikit-learn\n\n\u274c Error: Required libraries not installed. Run: pip install scikit-optimize scikit-learn\nTraceback (most recent call last):\n  File \"/home/nyx/Projects/mini_project_2025/hbrf_optimizer.py\", line 399, in <module>\n    optimizer = HBRFOptimizer(source_file, test_input)\n  File \"/home/nyx/Projects/mini_project_2025/hbrf_optimizer.py\", line 74, in __init__\n    raise ImportError(\"Required libraries not installed. Run: pip install scikit-optimize scikit-learn\")\nImportError: Required libraries not installed. Run: pip install scikit-optimize scikit-learn",
+  "result": {
+    "best_time": null,
+    "total_time": null,
+    "evaluations": null,
+    "enabled_flags": []
+  }
+}
