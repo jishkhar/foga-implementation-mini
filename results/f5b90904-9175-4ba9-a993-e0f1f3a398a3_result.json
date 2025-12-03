@@ -1,0 +1,11 @@
+{
+  "job_id": "f5b90904-9175-4ba9-a993-e0f1f3a398a3",
+  "optimizer": "foga",
+  "output": "\n\u274c Error: Unsupported file type. Please provide a .c or .cpp file.",
+  "result": {
+    "best_time": null,
+    "total_time": null,
+    "evaluations": null,
+    "enabled_flags": []
+  }
+}

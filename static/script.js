@@ -150,7 +150,10 @@ document.addEventListener('DOMContentLoaded', () => {
             // Append new data to the terminal output
             // outputContent.textContent += event.data + '\n'; // This might double newlines if data already has them
             // The data from server is line-based.
-            outputContent.textContent += event.data;
+            // Append new data to the terminal output
+            // The data from server is line-based and stripped of trailing newline for SSE transport.
+            // So we add the newline back here for display.
+            outputContent.textContent += event.data + '\n';
 
             // Auto-scroll to bottom
             const terminalContainer = document.querySelector('.terminal-output');
