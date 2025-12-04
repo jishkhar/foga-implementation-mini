@@ -97,10 +97,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function pollJobStatus(jobId) {
+        let failures = 0;
+        const maxFailures = 5;
+
         const pollInterval = setInterval(async () => {
             try {
                 const response = await fetch(`/jobs/${jobId}`);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
                 const job = await response.json();
+                failures = 0; // Reset failures on success
 
                 if (job.status === 'completed') {
                     clearInterval(pollInterval);
@@ -116,9 +125,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     resetBtn();
                 }
             } catch (err) {
-                clearInterval(pollInterval);
-                showError('Failed to poll job status');
-                resetBtn();
+                console.warn('Polling attempt failed:', err);
+                failures++;
+
+                if (failures >= maxFailures) {
+                    clearInterval(pollInterval);
+                    showError('Failed to poll job status after multiple attempts');
+                    resetBtn();
+                }
             }
         }, 2000);
     }
@@ -158,24 +172,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (job.result) {
             // Format generic results
-            if (job.result.best_time !== undefined) {
-                 html += `
+            if (job.result.best_time !== undefined && job.result.best_time !== null) {
+                html += `
                     <div class="result-item">
                         <div class="result-label">BEST EXECUTION TIME</div>
                         <div class="result-value">${job.result.best_time.toFixed(6)} s</div>
                     </div>
                 `;
             }
-            if (job.result.total_time !== undefined) {
-                 html += `
+            if (job.result.total_time !== undefined && job.result.total_time !== null) {
+                html += `
                     <div class="result-item">
                         <div class="result-label">OPTIMIZATION TIME</div>
                         <div class="result-value">${job.result.total_time.toFixed(2)} s</div>
                     </div>
                 `;
             }
-            if (job.result.evaluations !== undefined) {
-                 html += `
+            if (job.result.evaluations !== undefined && job.result.evaluations !== null) {
+                html += `
                     <div class="result-item">
                         <div class="result-label">TOTAL EVALUATIONS</div>
                         <div class="result-value">${job.result.evaluations}</div>
@@ -193,11 +207,71 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Handle generic JSON dump for comparisons if structure differs
+        // Handle comparison results
         if (job.optimizer === 'compare_optimizers' && job.result) {
-             html += `
-                <div class="result-item" style="display:block">
-                    <pre style="background:transparent; padding:0; color:var(--primary);">${JSON.stringify(job.result, null, 2)}</pre>
+            const r = job.result;
+            const o3_time = r.baseline ? r.baseline['-O3'] : Infinity;
+
+            // Collect all times
+            const methods = [];
+
+            // Add baseline methods
+            if (r.baseline) {
+                for (const [method, time] of Object.entries(r.baseline)) {
+                    methods.push({ name: method, time: time });
+                }
+            }
+
+            // Add optimizers
+            if (r.FOGA) methods.push({ name: 'FOGA', time: r.FOGA.best_time });
+            if (r.HBRF) methods.push({ name: 'HBRF', time: r.HBRF.best_time });
+            if (r.XGBOOST) methods.push({ name: 'XGBOOST', time: r.XGBOOST.best_time });
+
+            // Sort by time (ascending)
+            methods.sort((a, b) => {
+                const tA = a.time === null ? Infinity : a.time;
+                const tB = b.time === null ? Infinity : b.time;
+                return tA - tB;
+            });
+
+            // Build table HTML
+            let tableRows = '';
+            methods.forEach((item, index) => {
+                const timeStr = (item.time === null || item.time === undefined || item.time === Infinity) ? 'Failed' : item.time.toFixed(6);
+
+                let speedupStr = 'N/A';
+                if (item.time !== null && item.time !== Infinity && o3_time !== Infinity && o3_time !== 0) {
+                    const speedup = ((o3_time - item.time) / o3_time) * 100;
+                    speedupStr = (speedup >= 0 ? '+' : '') + speedup.toFixed(2) + '%';
+                }
+                if (item.name === '-O3') speedupStr = '+0.00%';
+
+                tableRows += `
+                    <tr>
+                        <td>${item.name}</td>
+                        <td>${timeStr}</td>
+                        <td>${speedupStr}</td>
+                        <td>#${index + 1}</td>
+                    </tr>
+                `;
+            });
+
+            html += `
+                <div class="result-item" style="display:block; width:100%;">
+                    <div class="result-label" style="margin-bottom:1rem; border-bottom: 1px solid #444; padding-bottom: 0.5rem;">EXECUTION TIME COMPARISON</div>
+                    <table style="width:100%; border-collapse: collapse; font-family: monospace; font-size: 0.9rem;">
+                        <thead>
+                            <tr style="border-bottom: 1px solid #444; text-align: left;">
+                                <th style="padding: 8px;">Method</th>
+                                <th style="padding: 8px;">Time (s)</th>
+                                <th style="padding: 8px;">Speedup vs -O3</th>
+                                <th style="padding: 8px;">Rank</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${tableRows}
+                        </tbody>
+                    </table>
                 </div>
             `;
         }
@@ -205,7 +279,6 @@ document.addEventListener('DOMContentLoaded', () => {
         resultsContent.innerHTML = html;
 
         if (job.output) {
-            // Ensure final output is synced
             outputContent.textContent = job.output;
         }
     }

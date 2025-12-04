@@ -1,2 +1,0 @@
-
-❌ Error: Unsupported file type. Please provide a .c or .cpp file.

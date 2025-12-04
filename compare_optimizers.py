@@ -372,25 +372,41 @@ class OptimizerComparison:
                 margin = ((sorted_bests[1][1] - winner_time) / sorted_bests[1][1]) * 100
                 print(f"   {winner} achieved {margin:.2f}% better execution time vs second best")
 
+        # Load detailed results from JSON files
+        detailed_results = {}
+        
+        for method, filename in [('FOGA', 'foga_results.json'), ('HBRF', 'hbrf_results.json'), ('XGBOOST', 'xgboost_results.json')]:
+            if os.path.exists(filename):
+                try:
+                    with open(filename, 'r') as f:
+                        data = json.load(f)
+                        # Ensure the format matches the user requirement
+                        detailed_results[method] = {
+                            "best_time": data.get('best_time', float('inf')),
+                            "total_evaluations": data.get('total_evaluations', 0),
+                            "enabled_flags": data.get('enabled_flags', [])
+                        }
+                except Exception as e:
+                    print(f"Warning: Could not read {filename}: {e}")
+                    detailed_results[method] = {
+                        "best_time": float('inf'),
+                        "total_evaluations": 0,
+                        "enabled_flags": []
+                    }
+            else:
+                detailed_results[method] = {
+                    "best_time": float('inf'),
+                    "total_evaluations": 0,
+                    "enabled_flags": []
+                }
+
         comparison_data = {
             'timestamp': datetime.now().isoformat(),
             'source_file': self.source_file,
             'baseline': baseline,
-            'FOGA': {
-                'best_time': foga_best,
-                'total_time': foga_time,
-                'evaluations': foga_evals
-            },
-            'HBRF': {
-                'best_time': hbrf_best,
-                'total_time': hbrf_time,
-                'evaluations': hbrf_evals
-            },
-            'XGBOOST': {
-                'best_time': xgb_best,
-                'total_time': xgb_time,
-                'evaluations': xgb_evals
-            },
+            'FOGA': detailed_results['FOGA'],
+            'HBRF': detailed_results['HBRF'],
+            'XGBOOST': detailed_results['XGBOOST'],
             'winner': winner,
             'improvements': {
                 'FOGA_vs_O3': foga_improvement,
@@ -403,6 +419,36 @@ class OptimizerComparison:
             json.dump(comparison_data, f, indent=2)
 
         print("\n📄 Comparison results saved to: comparison_results.json")
+        
+        print("\n" + "=" * 80)
+        print("📝 DETAILED METRICS")
+        print("=" * 80)
+
+        for method in ['FOGA', 'HBRF', 'XGBOOST']:
+            print(f"\n--- {method} ---")
+            
+            # Get data from detailed_results (loaded from JSON)
+            d_res = detailed_results.get(method, {})
+            best_time = d_res.get('best_time', 'N/A')
+            evals = d_res.get('total_evaluations', 'N/A')
+            flags = d_res.get('enabled_flags', [])
+            
+            # Get optimization time from self.results (measured by this script)
+            opt_time = self.results.get(method, {}).get('total_time', 'N/A')
+            if isinstance(opt_time, (int, float)):
+                opt_time = f"{opt_time:.4f}s"
+
+            print(f"BEST EXECUTION TIME: {best_time}")
+            print(f"OPTIMIZATION TIME: {opt_time}")
+            print(f"TOTAL EVALUATIONS: {evals}")
+            print(f"ENABLED FLAGS: {json.dumps(flags, indent=2)}")
+
+        print("\n" + "=" * 80)
+        
+        # Also print the detailed results in the requested format for verification/parsing
+        print("\n📋 Detailed Results (JSON Format):")
+        print(json.dumps(detailed_results, indent=2))
+
         self.generate_visualizations(times_dict, foga_time, hbrf_time, xgb_time)
 
     def generate_visualizations(self, times_dict, foga_opt_time, hbrf_opt_time, xgb_opt_time):

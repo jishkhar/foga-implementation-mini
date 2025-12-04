@@ -4,6 +4,7 @@ import random
 import os
 import sys
 import signal
+import json
 from contextlib import contextmanager
 
 # --- Configuration based on FOGA Paper (Table II) ---
@@ -485,6 +486,17 @@ class FOGA:
                 print("✅ Optimized binary created successfully: ./optimized_binary")
             else:
                 print("⚠ Failed to create optimized binary")
+
+            # Save results to JSON
+            results = {
+                'best_time': self.best_individual.fitness,
+                'total_evaluations': POPULATION_SIZE * MAX_GENERATIONS, # Approximate or track actual
+                'enabled_flags': enabled_flags
+            }
+            
+            with open('foga_results.json', 'w') as f:
+                json.dump(results, f, indent=2)
+            print("📄 Results saved to: foga_results.json")
 
             # Add the comparison table at the end
             self._benchmark_and_compare()

@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/home/nyx/Projects/mini_project_2025/xgboost_optimizer.py", line 6, in <module>
+    import numpy as np
+ModuleNotFoundError: No module named 'numpy'

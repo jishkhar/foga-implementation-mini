@@ -1,0 +1,11 @@
+======================================================================
+🚀 XGBoost Optimizer
+======================================================================
+Compiler: GCC
+Source: uploads/9b29254f-a634-4ee0-bfe6-05f2953ab27f_matrix_multiply.c
+Total flags in search space: 83
+Starting XGBoost optimization...
+Collected 100 valid samples
+XGBoost model trained. Starting optimization...
+Optimization complete.
+Results saved to xgboost_results.json

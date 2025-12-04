@@ -112,6 +112,7 @@ def update_job_status(job_id: str, status: str, **kwargs):
 def run_optimizer_task(job_id: str, optimizer: str, source_path: str, test_input_path: Optional[str] = None):
     """Background task to run optimizer"""
     try:
+        print(f"[{job_id}] Starting optimizer task: {optimizer}")
         update_job_status(job_id, "running")
         
         # Build command
@@ -158,6 +159,7 @@ def run_optimizer_task(job_id: str, optimizer: str, source_path: str, test_input
                 "result": result
             }, f, indent=2)
         
+        print(f"[{job_id}] Optimization completed. Result: {result}")
         update_job_status(job_id, "completed", result=result, output=output)
         
     except subprocess.TimeoutExpired:
@@ -172,6 +174,7 @@ def run_optimizer_task(job_id: str, optimizer: str, source_path: str, test_input
             "failed", 
             error=str(e)
         )
+        print(f"[{job_id}] Optimization failed: {e}")
 
 
 def parse_optimizer_output(optimizer: str, output: str) -> Dict:
@@ -187,6 +190,7 @@ def parse_optimizer_output(optimizer: str, output: str) -> Dict:
         if optimizer in ["foga", "hbrf_optimizer", "xgboost_optimizer"]:
             # Try to load JSON results file
             json_files = {
+                "foga": "foga_results.json",
                 "hbrf_optimizer": "hbrf_results.json",
                 "xgboost_optimizer": "xgboost_results.json"
             }
