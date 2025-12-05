@@ -1,0 +1,249 @@
+{
+  "job_id": "5845af8c-2111-4457-90a0-c86ff8167afb",
+  "optimizer": "hbrf_optimizer",
+  "output": "======================================================================\n\ud83d\udd2c HYBRID BAYESIAN-RANDOM FOREST OPTIMIZER (HBRF)\n======================================================================\nCompiler: GCC\nSource: uploads/7fcb2fd9-3631-4d00-bd2f-58fd3d7b5b76_matrix_multiply.c\nTotal flags in search space: 84\n\nOptimization Strategy:\n  Phase 1: Random sampling (100 configurations)\n  Phase 2: Feature importance analysis (top 20 flags)\n  Phase 3: Bayesian optimization (50 iterations)\n  Phase 4: Greedy refinement\n----------------------------------------------------------------------\n\n======================================================================\n\ud83d\udcca PHASE 1: Random Sampling\n======================================================================\nSampling 1/100...\nSampling 2/100...\nSampling 3/100...\nSampling 4/100...\nSampling 5/100...\nSampling 6/100...\nSampling 7/100...\nSampling 8/100...\nSampling 9/100...\nSampling 10/100...\nSampling 11/100...\nSampling 12/100...\nSampling 13/100...\nSampling 14/100...\nSampling 15/100...\nSampling 16/100...\nSampling 17/100...\nSampling 18/100...\nSampling 19/100...\nSampling 20/100...\nSampling 21/100...\nSampling 22/100...\nSampling 23/100...\nSampling 24/100...\nSampling 25/100...\nSampling 26/100...\nSampling 27/100...\nSampling 28/100...\nSampling 29/100...\nSampling 30/100...\nSampling 31/100...\nSampling 32/100...\nSampling 33/100...\nSampling 34/100...\nSampling 35/100...\nSampling 36/100...\nSampling 37/100...\nSampling 38/100...\nSampling 39/100...\nSampling 40/100...\nSampling 41/100...\nSampling 42/100...\nSampling 43/100...\nSampling 44/100...\nSampling 45/100...\nSampling 46/100...\nSampling 47/100...\nSampling 48/100...\nSampling 49/100...\nSampling 50/100...\nSampling 51/100...\nSampling 52/100...\nSampling 53/100...\nSampling 54/100...\nSampling 55/100...\nSampling 56/100...\nSampling 57/100...\nSampling 58/100...\nSampling 59/100...\nSampling 60/100...\nSampling 61/100...\nSampling 62/100...\nSampling 63/100...\nSampling 64/100...\nSampling 65/100...\nSampling 66/100...\nSampling 67/100...\nSampling 68/100...\nSampling 69/100...\nSampling 70/100...\nSampling 71/100...\nSampling 72/100...\nSampling 73/100...\nSampling 74/100...\nSampling 75/100...\nSampling 76/100...\nSampling 77/100...\nSampling 78/100...\nSampling 79/100...\nSampling 80/100...\nSampling 81/100...\nSampling 82/100...\nSampling 83/100...\nSampling 84/100...\nSampling 85/100...\nSampling 86/100...\nSampling 87/100...\nSampling 88/100...\nSampling 89/100...\nSampling 90/100...\nSampling 91/100...\nSampling 92/100...\nSampling 93/100...\nSampling 94/100...\nSampling 95/100...\nSampling 96/100...\nSampling 97/100...\nSampling 98/100...\nSampling 99/100...\nSampling 100/100...\nCollected 100 valid samples\nBest time so far: 0.001466s\nAverage time: 0.001788s\n\n======================================================================\n\ud83c\udf32 PHASE 2: Random Forest Feature Importance Analysis\n======================================================================\nTraining Random Forest model...\n\n\ud83d\udcc8 Top 20 Most Important Flags:\n----------------------------------------------------------------------\n   1. -fpeel-loops                             | Importance: 0.0435\n   2. -fauto-inc-dec                           | Importance: 0.0415\n   3. -falign-labels                           | Importance: 0.0334\n   4. -foptimize-sibling-calls                 | Importance: 0.0314\n   5. -free                                    | Importance: 0.0310\n   6. -fshort-enums                            | Importance: 0.0275\n   7. -fipa-cp-clone                           | Importance: 0.0246\n   8. -fearly-inlining                         | Importance: 0.0229\n   9. -ftree-loop-optimize                     | Importance: 0.0229\n  10. -fomit-frame-pointer                     | Importance: 0.0210\n  11. -ftree-ch                                | Importance: 0.0182\n  12. -fipa-modref                             | Importance: 0.0181\n  13. -fdce                                    | Importance: 0.0178\n  14. -fsplit-paths                            | Importance: 0.0174\n  15. -fsched-spec                             | Importance: 0.0174\n  16. -falign-jumps                            | Importance: 0.0166\n  17. -fdelete-null-pointer-checks             | Importance: 0.0166\n  18. -fipa-icf                                | Importance: 0.0155\n  19. -ftree-dse                               | Importance: 0.0144\n  20. -fcse-follow-jumps                       | Importance: 0.0142\n\n\u2713 Reduced search space from 2^84 to 2^20\n  Reduction factor: 1.84e+19\n\n======================================================================\n\ud83c\udfaf PHASE 3: Bayesian Optimization on Reduced Space\n======================================================================\nRunning Bayesian Optimization for 50 iterations...\nBO Iteration 1: 0.002050s (Best: 0.001466s)\nBO Iteration 2: 0.001599s (Best: 0.001466s)\nBO Iteration 3: 0.001508s (Best: 0.001466s)\nBO Iteration 4: 0.001832s (Best: 0.001466s)\nBO Iteration 5: 0.002591s (Best: 0.001466s)\nBO Iteration 6: 0.001578s (Best: 0.001466s)\nBO Iteration 7: 0.002987s (Best: 0.001466s)\nBO Iteration 8: 0.001688s (Best: 0.001466s)\nBO Iteration 9: 0.001658s (Best: 0.001466s)\nBO Iteration 10: 0.001469s (Best: 0.001466s)\nBO Iteration 11: 0.001573s (Best: 0.001466s)\nBO Iteration 12: 0.001620s (Best: 0.001466s)\nBO Iteration 13: 0.001631s (Best: 0.001466s)\nBO Iteration 14: 0.004343s (Best: 0.001466s)\nBO Iteration 15: 0.001800s (Best: 0.001466s)\nBO Iteration 16: 0.001699s (Best: 0.001466s)\nBO Iteration 17: 0.001761s (Best: 0.001466s)\nBO Iteration 18: 0.001794s (Best: 0.001466s)\nBO Iteration 19: 0.001741s (Best: 0.001466s)\nBO Iteration 20: 0.001798s (Best: 0.001466s)\nBO Iteration 21: 0.001790s (Best: 0.001466s)\nBO Iteration 22: 0.001691s (Best: 0.001466s)\nBO Iteration 23: 0.002016s (Best: 0.001466s)\nBO Iteration 24: 0.001923s (Best: 0.001466s)\nBO Iteration 25: 0.001618s (Best: 0.001466s)\nBO Iteration 26: 0.004011s (Best: 0.001466s)\nBO Iteration 27: 0.001758s (Best: 0.001466s)\nBO Iteration 28: 0.001706s (Best: 0.001466s)\nBO Iteration 29: 0.001869s (Best: 0.001466s)\nBO Iteration 30: 0.001712s (Best: 0.001466s)\nBO Iteration 31: 0.001883s (Best: 0.001466s)\nBO Iteration 32: 0.001774s (Best: 0.001466s)\nBO Iteration 33: 0.001884s (Best: 0.001466s)\nBO Iteration 34: 0.001481s (Best: 0.001466s)\nBO Iteration 35: 0.001656s (Best: 0.001466s)\nBO Iteration 36: 0.001708s (Best: 0.001466s)\nBO Iteration 37: 0.001628s (Best: 0.001466s)\nBO Iteration 38: 0.001590s (Best: 0.001466s)\nBO Iteration 39: 0.001722s (Best: 0.001466s)\nBO Iteration 40: 0.001709s (Best: 0.001466s)\nBO Iteration 41: 0.001855s (Best: 0.001466s)\nBO Iteration 42: 0.001716s (Best: 0.001466s)\nBO Iteration 43: 0.001708s (Best: 0.001466s)\nBO Iteration 44: 0.001513s (Best: 0.001466s)\nBO Iteration 45: 0.001654s (Best: 0.001466s)\nBO Iteration 46: 0.001850s (Best: 0.001466s)\nBO Iteration 47: 0.001545s (Best: 0.001466s)\nBO Iteration 48: 0.001631s (Best: 0.001466s)\nBO Iteration 49: 0.001682s (Best: 0.001466s)\nBO Iteration 50: 0.001621s (Best: 0.001466s)\n\u2713 Bayesian Optimization complete\n  Best time found: 0.001466s\n  Total evaluations: 150\n\n======================================================================\n\ud83d\udd0d PHASE 4: Greedy Refinement\n======================================================================\n\n\u2713 Greedy refinement complete: 0 improvements found\n\n======================================================================\n\u2705 HBRF OPTIMIZATION COMPLETE\n======================================================================\n\n\ud83c\udfc6 Best Execution Time: 0.001466 seconds\n\u23f1\ufe0f  Total Optimization Time: 31.86 seconds\n\ud83d\udcca Total Evaluations: 170\n\ud83d\udcc8 Evaluations per second: 5.34\n\n\ud83d\udccb Enabled Flags (35 total):\n   1. -faggressive-loop-optimizations\n   2. -falign-labels                                | Importance: 0.0334\n   3. -falign-loops\n   4. -fassociative-math\n   5. -fcode-hoisting\n   6. -fcommon\n   7. -fconserve-stack\n   8. -fcprop-registers\n   9. -fcx-limited-range\n  10. -fdelete-null-pointer-checks                  | Importance: 0.0166\n  11. -fdevirtualize\n  12. -fdse\n  13. -fearly-inlining                              | Importance: 0.0229\n  14. -fexceptions\n  15. -fipa-cp-clone                                | Importance: 0.0246\n  16. -finline-functions\n  17. -fmove-loop-invariants\n  18. -fomit-frame-pointer                          | Importance: 0.0210\n  19. -fpeel-loops                                  | Importance: 0.0435\n  20. -frounding-math\n  21. -fsched-interblock\n  22. -fsection-anchors\n  23. -fshrink-wrap\n  24. -fstrict-aliasing\n  25. -fthread-jumps\n  26. -ftree-ch                                     | Importance: 0.0182\n  27. -ftree-copy-prop\n  28. -ftree-loop-vectorize\n  29. -ftree-reassoc\n  30. -ftree-sra\n  31. -ftree-ter\n  32. -ftree-vrp\n  33. -funroll-all-loops\n  34. -funwind-tables\n  35. -fvar-tracking-assignments\n\n\ud83d\udcbb Optimal Compilation Command:\ngcc -O3 uploads/7fcb2fd9-3631-4d00-bd2f-58fd3d7b5b76_matrix_multiply.c -faggressive-loop-optimizations -falign-labels -falign-loops -fassociative-math -fcode-hoisting -fcommon -fconserve-stack -fcprop-registers -fcx-limited-range -fdelete-null-pointer-checks -fdevirtualize -fdse -fearly-inlining -fexceptions -fipa-cp-clone -finline-functions -fmove-loop-invariants -fomit-frame-pointer -fpeel-loops -frounding-math -fsched-interblock -fsection-anchors -fshrink-wrap -fstrict-aliasing -fthread-jumps -ftree-ch -ftree-copy-prop -ftree-loop-vectorize -ftree-reassoc -ftree-sra -ftree-ter -ftree-vrp -funroll-all-loops -funwind-tables -fvar-tracking-assignments -o optimized_hbrf\n\n\ud83d\udd28 Creating optimized binary...\n\u2705 Optimized binary created: ./optimized_hbrf\n\ud83d\udcc4 Results saved to: hbrf_results.json",
+  "result": {
+    "best_time": 0.0014660358428955078,
+    "total_time": 31.863426685333252,
+    "evaluations": 170,
+    "enabled_flags": [
+      "-faggressive-loop-optimizations",
+      "-falign-labels",
+      "-falign-loops",
+      "-fassociative-math",
+      "-fcode-hoisting",
+      "-fcommon",
+      "-fconserve-stack",
+      "-fcprop-registers",
+      "-fcx-limited-range",
+      "-fdelete-null-pointer-checks",
+      "-fdevirtualize",
+      "-fdse",
+      "-fearly-inlining",
+      "-fexceptions",
+      "-fipa-cp-clone",
+      "-finline-functions",
+      "-fmove-loop-invariants",
+      "-fomit-frame-pointer",
+      "-fpeel-loops",
+      "-frounding-math",
+      "-fsched-interblock",
+      "-fsection-anchors",
+      "-fshrink-wrap",
+      "-fstrict-aliasing",
+      "-fthread-jumps",
+      "-ftree-ch",
+      "-ftree-copy-prop",
+      "-ftree-loop-vectorize",
+      "-ftree-reassoc",
+      "-ftree-sra",
+      "-ftree-ter",
+      "-ftree-vrp",
+      "-funroll-all-loops",
+      "-funwind-tables",
+      "-fvar-tracking-assignments"
+    ],
+    "history": [
+      {
+        "iteration": 101,
+        "best": 0.001466
+      },
+      {
+        "iteration": 102,
+        "best": 0.001466
+      },
+      {
+        "iteration": 103,
+        "best": 0.001466
+      },
+      {
+        "iteration": 104,
+        "best": 0.001466
+      },
+      {
+        "iteration": 105,
+        "best": 0.001466
+      },
+      {
+        "iteration": 106,
+        "best": 0.001466
+      },
+      {
+        "iteration": 107,
+        "best": 0.001466
+      },
+      {
+        "iteration": 108,
+        "best": 0.001466
+      },
+      {
+        "iteration": 109,
+        "best": 0.001466
+      },
+      {
+        "iteration": 110,
+        "best": 0.001466
+      },
+      {
+        "iteration": 111,
+        "best": 0.001466
+      },
+      {
+        "iteration": 112,
+        "best": 0.001466
+      },
+      {
+        "iteration": 113,
+        "best": 0.001466
+      },
+      {
+        "iteration": 114,
+        "best": 0.001466
+      },
+      {
+        "iteration": 115,
+        "best": 0.001466
+      },
+      {
+        "iteration": 116,
+        "best": 0.001466
+      },
+      {
+        "iteration": 117,
+        "best": 0.001466
+      },
+      {
+        "iteration": 118,
+        "best": 0.001466
+      },
+      {
+        "iteration": 119,
+        "best": 0.001466
+      },
+      {
+        "iteration": 120,
+        "best": 0.001466
+      },
+      {
+        "iteration": 121,
+        "best": 0.001466
+      },
+      {
+        "iteration": 122,
+        "best": 0.001466
+      },
+      {
+        "iteration": 123,
+        "best": 0.001466
+      },
+      {
+        "iteration": 124,
+        "best": 0.001466
+      },
+      {
+        "iteration": 125,
+        "best": 0.001466
+      },
+      {
+        "iteration": 126,
+        "best": 0.001466
+      },
+      {
+        "iteration": 127,
+        "best": 0.001466
+      },
+      {
+        "iteration": 128,
+        "best": 0.001466
+      },
+      {
+        "iteration": 129,
+        "best": 0.001466
+      },
+      {
+        "iteration": 130,
+        "best": 0.001466
+      },
+      {
+        "iteration": 131,
+        "best": 0.001466
+      },
+      {
+        "iteration": 132,
+        "best": 0.001466
+      },
+      {
+        "iteration": 133,
+        "best": 0.001466
+      },
+      {
+        "iteration": 134,
+        "best": 0.001466
+      },
+      {
+        "iteration": 135,
+        "best": 0.001466
+      },
+      {
+        "iteration": 136,
+        "best": 0.001466
+      },
+      {
+        "iteration": 137,
+        "best": 0.001466
+      },
+      {
+        "iteration": 138,
+        "best": 0.001466
+      },
+      {
+        "iteration": 139,
+        "best": 0.001466
+      },
+      {
+        "iteration": 140,
+        "best": 0.001466
+      },
+      {
+        "iteration": 141,
+        "best": 0.001466
+      },
+      {
+        "iteration": 142,
+        "best": 0.001466
+      },
+      {
+        "iteration": 143,
+        "best": 0.001466
+      },
+      {
+        "iteration": 144,
+        "best": 0.001466
+      },
+      {
+        "iteration": 145,
+        "best": 0.001466
+      },
+      {
+        "iteration": 146,
+        "best": 0.001466
+      },
+      {
+        "iteration": 147,
+        "best": 0.001466
+      },
+      {
+        "iteration": 148,
+        "best": 0.001466
+      },
+      {
+        "iteration": 149,
+        "best": 0.001466
+      },
+      {
+        "iteration": 150,
+        "best": 0.001466
+      }
+    ]
+  }
+}

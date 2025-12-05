@@ -203,23 +203,105 @@ def parse_optimizer_output(optimizer: str, output: str) -> Dict:
                     result["evaluations"] = data.get("total_evaluations")
                     result["enabled_flags"] = data.get("enabled_flags", [])
             
-            # Parse from output as fallback
-            for line in output.split('\n'):
-                if 'Best Execution Time:' in line:
-                    try:
-                        result["best_time"] = float(line.split(':')[1].strip().split()[0])
-                    except:
-                        pass
-                elif 'Total Optimization Time:' in line or 'Total time:' in line:
-                    try:
-                        result["total_time"] = float(line.split(':')[1].strip().split()[0])
-                    except:
-                        pass
-                elif 'Total Evaluations:' in line or 'Evaluations:' in line:
-                    try:
-                        result["evaluations"] = int(line.split(':')[1].strip())
-                    except:
-                        pass
+            # Parse from output as fallback and for time-series data
+            history = []
+            
+            if optimizer == "foga":
+                # FOGA: Gen  1 | Valid: ... | Best: ... | Avg: ...
+                for line in output.split('\n'):
+                    if line.strip().startswith('Gen') and '| Best:' in line:
+                        try:
+                            parts = line.split('|')
+                            gen = int(parts[0].strip().split()[1])
+                            best = float(parts[2].strip().split(':')[1].strip().replace('s', ''))
+                            avg = float(parts[3].strip().split(':')[1].strip().replace('s', ''))
+                            history.append({"iteration": gen, "best": best, "avg": avg})
+                        except:
+                            pass
+                result["history"] = history
+
+            elif optimizer == "hbrf_optimizer":
+                # HBRF: Sampling ... / BO Iteration ... / Adding ...
+                # We want to track best time over evaluations
+                current_best = float('inf')
+                eval_count = 0
+                
+                for line in output.split('\n'):
+                    # Phase 1: Sampling
+                    if 'Sampling' in line and '/' in line:
+                         # No time in this line usually, but let's check if we can infer or if it prints result
+                         pass
+                    
+                    # We need lines that show execution time or new best
+                    # The script prints "Sampling ...", then nothing until next line?
+                    # Actually HBRF script prints "Sampling i/N..." then "Evaluate..." inside evaluate_configuration?
+                    # Looking at hbrf_optimizer.py, it prints "Sampling i/N..." then nothing else per sample unless we change it.
+                    # Wait, HBRF script prints: "Sampling 1/100..." then updates line.
+                    # It doesn't print the time for each sample in the log shown in `view_file`.
+                    # But it DOES print "Best time so far: ..." after Phase 1.
+                    
+                    # Phase 3: BO Iteration X: time (Best: time)
+                    if 'BO Iteration' in line and 'Best:' in line:
+                        try:
+                            parts = line.split(':')
+                            # BO Iteration 1: 0.123s (Best: 0.123s)
+                            # This might be tricky because of the carriage return \r in the script.
+                            # The output captured might just be the final state or all lines if flushed.
+                            # The script uses end='\r' for BO iterations.
+                            # However, `run_optimizer_task` reads stdout. If it captures all updates, we can parse.
+                            if '(' in line and 'Best' in line:
+                                best_part = line.split('Best:')[1].strip().replace('s)', '').replace('s', '')
+                                best_val = float(best_part)
+                                iter_part = line.split(':')[0].replace('BO Iteration', '').strip()
+                                iter_val = int(iter_part) + 100 # + initial samples
+                                history.append({"iteration": iter_val, "best": best_val})
+                        except:
+                            pass
+                            
+                    # Phase 4: Greedy
+                    if 'Adding' in line and '->' in line:
+                        try:
+                            # Adding -f...: 0.123s -> 0.111s
+                            new_time = float(line.split('->')[1].strip().replace('s', ''))
+                            history.append({"iteration": "Greedy", "best": new_time})
+                        except:
+                            pass
+                            
+                result["history"] = history
+
+            elif optimizer == "xgboost_optimizer":
+                # XGBoost: Sampling ... / Iteration ...
+                for line in output.split('\n'):
+                    if 'Iteration' in line and 'Best:' in line:
+                        try:
+                            # Iteration 1/50: Best: 0.123s
+                            parts = line.split(':')
+                            best_val = float(parts[2].strip().replace('s', ''))
+                            iter_part = parts[0].replace('Iteration', '').split('/')[0].strip()
+                            iter_val = int(iter_part) + 100 # + initial samples
+                            history.append({"iteration": iter_val, "best": best_val})
+                        except:
+                            pass
+                result["history"] = history
+
+            # Common parsing for final results if JSON failed
+            if result["best_time"] is None:
+                for line in output.split('\n'):
+                    if 'Best Execution Time:' in line:
+                        try:
+                            result["best_time"] = float(line.split(':')[1].strip().split()[0])
+                        except:
+                            pass
+                    elif 'Total Optimization Time:' in line or 'Total time:' in line:
+                        try:
+                            result["total_time"] = float(line.split(':')[1].strip().split()[0])
+                        except:
+                            pass
+                    elif 'Total Evaluations:' in line or 'Evaluations:' in line:
+                        try:
+                            result["evaluations"] = int(line.split(':')[1].strip())
+                        except:
+                            pass
         
         elif optimizer == "compare_optimizers":
             # Load comparison results

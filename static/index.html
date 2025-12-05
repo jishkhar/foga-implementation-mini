@@ -92,6 +92,10 @@
                         <!-- Results injected here -->
                     </div>
 
+                    <div id="chartsContainer" class="charts-container" style="display: none; margin-top: 20px;">
+                        <canvas id="optimizationChart"></canvas>
+                    </div>
+
                     <div id="terminalOutput" class="terminal-output" style="display: none;">
                         <div class="terminal-header">
                             <span>console_output</span>
@@ -106,7 +110,8 @@
             </section>
         </main>
     </div>
-    <script src="/static/script.js?v=2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/static/script.js?v=3"></script>
 </body>
 
 </html>

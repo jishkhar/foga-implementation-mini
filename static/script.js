@@ -281,5 +281,293 @@ document.addEventListener('DOMContentLoaded', () => {
         if (job.output) {
             outputContent.textContent = job.output;
         }
+
+        // Render Charts
+        renderCharts(job);
+    }
+
+    // Chart.js Global Defaults
+    Chart.defaults.color = '#cccccc';
+    Chart.defaults.font.family = '"JetBrains Mono", monospace';
+    Chart.defaults.borderColor = '#444444';
+
+    let currentChart = null;
+
+    function renderCharts(job) {
+        const chartsContainer = document.getElementById('chartsContainer');
+        const canvas = document.getElementById('optimizationChart');
+        const ctx = canvas.getContext('2d');
+
+        if (currentChart) {
+            currentChart.destroy();
+            currentChart = null;
+        }
+
+        if (!job.result) return;
+
+        chartsContainer.style.display = 'none';
+
+        // Helper to create gradient
+        function createGradient(ctx, colorStart, colorEnd) {
+            const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+            gradient.addColorStop(0, colorStart);
+            gradient.addColorStop(1, colorEnd);
+            return gradient;
+        }
+
+        // Common Chart Options
+        const commonOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: {
+                mode: 'index',
+                intersect: false,
+            },
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#ecf0f1',
+                        font: { size: 12 }
+                    }
+                },
+                tooltip: {
+                    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                    titleColor: '#ecf0f1',
+                    bodyColor: '#ecf0f1',
+                    borderColor: '#444',
+                    borderWidth: 1,
+                    padding: 10,
+                    displayColors: true,
+                    callbacks: {
+                        label: function (context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.parsed.y !== null) {
+                                label += context.parsed.y.toFixed(6) + 's';
+                            }
+                            return label;
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    grid: {
+                        color: 'rgba(68, 68, 68, 0.3)',
+                        borderColor: '#444'
+                    },
+                    ticks: { color: '#bdc3c7' }
+                },
+                y: {
+                    grid: {
+                        color: 'rgba(68, 68, 68, 0.3)',
+                        borderColor: '#444'
+                    },
+                    ticks: { color: '#bdc3c7' },
+                    beginAtZero: false
+                }
+            }
+        };
+
+        // FOGA Chart
+        if (job.optimizer === 'foga' && job.result.history && job.result.history.length > 0) {
+            chartsContainer.style.display = 'block';
+            // Resize container for better visibility
+            canvas.style.height = '400px';
+
+            const labels = job.result.history.map(h => `Gen ${h.iteration}`);
+            const bestData = job.result.history.map(h => h.best);
+            const avgData = job.result.history.map(h => h.avg);
+
+            const bestGradient = createGradient(ctx, 'rgba(46, 204, 113, 0.5)', 'rgba(46, 204, 113, 0.0)');
+            const avgGradient = createGradient(ctx, 'rgba(52, 152, 219, 0.5)', 'rgba(52, 152, 219, 0.0)');
+
+            currentChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Best Fitness',
+                            data: bestData,
+                            borderColor: '#2ecc71',
+                            backgroundColor: bestGradient,
+                            borderWidth: 2,
+                            pointBackgroundColor: '#2ecc71',
+                            pointRadius: 4,
+                            pointHoverRadius: 6,
+                            fill: true,
+                            tension: 0.3
+                        },
+                        {
+                            label: 'Avg Fitness',
+                            data: avgData,
+                            borderColor: '#3498db',
+                            backgroundColor: avgGradient,
+                            borderWidth: 2,
+                            pointBackgroundColor: '#3498db',
+                            pointRadius: 3,
+                            fill: true,
+                            tension: 0.3
+                        }
+                    ]
+                },
+                options: {
+                    ...commonOptions,
+                    plugins: {
+                        ...commonOptions.plugins,
+                        title: {
+                            display: true,
+                            text: 'FOGA: Genetic Algorithm Progress',
+                            color: '#ecf0f1',
+                            font: { size: 16, weight: 'bold' }
+                        }
+                    }
+                }
+            });
+        }
+        // HBRF & XGBoost Charts
+        else if ((job.optimizer === 'hbrf_optimizer' || job.optimizer === 'xgboost_optimizer') && job.result.history && job.result.history.length > 0) {
+            chartsContainer.style.display = 'block';
+            canvas.style.height = '400px';
+
+            const labels = job.result.history.map(h => h.iteration);
+            const bestData = job.result.history.map(h => h.best);
+
+            const color = job.optimizer === 'hbrf_optimizer' ? '#9b59b6' : '#e67e22'; // Purple for HBRF, Orange for XGB
+            const gradient = createGradient(ctx, job.optimizer === 'hbrf_optimizer' ? 'rgba(155, 89, 182, 0.5)' : 'rgba(230, 126, 34, 0.5)', 'rgba(0,0,0,0)');
+
+            currentChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Best Execution Time',
+                            data: bestData,
+                            borderColor: color,
+                            backgroundColor: gradient,
+                            borderWidth: 2,
+                            pointBackgroundColor: color,
+                            pointRadius: 2,
+                            pointHoverRadius: 5,
+                            fill: true,
+                            tension: 0.1,
+                            stepped: true
+                        }
+                    ]
+                },
+                options: {
+                    ...commonOptions,
+                    plugins: {
+                        ...commonOptions.plugins,
+                        title: {
+                            display: true,
+                            text: `${job.optimizer === 'hbrf_optimizer' ? 'HBRF' : 'XGBoost'} Optimization Trajectory`,
+                            color: '#ecf0f1',
+                            font: { size: 16, weight: 'bold' }
+                        }
+                    }
+                }
+            });
+        }
+        // Compare Chart
+        else if (job.optimizer === 'compare_optimizers' && job.result) {
+            chartsContainer.style.display = 'block';
+            canvas.style.height = '400px';
+
+            const r = job.result;
+            const labels = [];
+            const data = [];
+            const backgroundColors = [];
+            const borderColors = [];
+
+            // Define colors for known methods
+            const methodColors = {
+                '-O1': '#95a5a6',
+                '-O2': '#7f8c8d',
+                '-O3': '#34495e',
+                'FOGA': '#2ecc71',
+                'HBRF': '#9b59b6',
+                'XGBOOST': '#e67e22'
+            };
+
+            if (r.baseline) {
+                for (const [method, time] of Object.entries(r.baseline)) {
+                    if (time !== null && time !== Infinity) {
+                        labels.push(method);
+                        data.push(time);
+                        const c = methodColors[method] || '#95a5a6';
+                        backgroundColors.push(c);
+                        borderColors.push(c);
+                    }
+                }
+            }
+
+            if (r.FOGA && r.FOGA.best_time !== Infinity) {
+                labels.push('FOGA');
+                data.push(r.FOGA.best_time);
+                backgroundColors.push(methodColors['FOGA']);
+                borderColors.push(methodColors['FOGA']);
+            }
+            if (r.HBRF && r.HBRF.best_time !== Infinity) {
+                labels.push('HBRF');
+                data.push(r.HBRF.best_time);
+                backgroundColors.push(methodColors['HBRF']);
+                borderColors.push(methodColors['HBRF']);
+            }
+            if (r.XGBOOST && r.XGBOOST.best_time !== Infinity) {
+                labels.push('XGBOOST');
+                data.push(r.XGBOOST.best_time);
+                backgroundColors.push(methodColors['XGBOOST']);
+                borderColors.push(methodColors['XGBOOST']);
+            }
+
+            currentChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Execution Time (s)',
+                        data: data,
+                        backgroundColor: backgroundColors,
+                        borderColor: borderColors,
+                        borderWidth: 1,
+                        borderRadius: 4,
+                        barPercentage: 0.6
+                    }]
+                },
+                options: {
+                    ...commonOptions,
+                    indexAxis: 'y', // Horizontal bar chart for better label readability
+                    plugins: {
+                        ...commonOptions.plugins,
+                        title: {
+                            display: true,
+                            text: 'Optimizer Performance Comparison',
+                            color: '#ecf0f1',
+                            font: { size: 16, weight: 'bold' }
+                        },
+                        legend: { display: false }
+                    },
+                    scales: {
+                        x: {
+                            ...commonOptions.scales.x,
+                            title: {
+                                display: true,
+                                text: 'Execution Time (seconds)',
+                                color: '#95a5a6'
+                            }
+                        },
+                        y: {
+                            ...commonOptions.scales.y,
+                            grid: { display: false }
+                        }
+                    }
+                }
+            });
+        }
     }
 });
