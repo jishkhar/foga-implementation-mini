@@ -200,8 +200,13 @@ document.addEventListener('DOMContentLoaded', () => {
             if (job.result.enabled_flags && job.result.enabled_flags.length > 0) {
                 html += `
                     <div class="result-item" style="display:block">
-                        <div class="result-label" style="margin-bottom:0.5rem">ENABLED FLAGS</div>
-                        <div class="result-value" style="font-size:0.8rem; color: #fff;">${job.result.enabled_flags.join(' ')}</div>
+                        <div class="result-label" style="margin-bottom:0.5rem; display: flex; justify-content: space-between; align-items: center;">
+                            ENABLED FLAGS
+                            <button onclick="copyFlags(this)" class="copy-btn" style="background: transparent; border: none; color: #888; cursor: pointer; padding: 4px; transition: all 0.2s;" title="Copy Flags">
+                                <i data-lucide="copy" style="width: 16px; height: 16px;"></i>
+                            </button>
+                        </div>
+                        <div class="result-value" id="flagsContent" style="font-size:0.8rem; color: #fff;">${job.result.enabled_flags.join(' ')}</div>
                     </div>
                 `;
             }
@@ -277,6 +282,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         resultsContent.innerHTML = html;
+
+        // Initialize Lucide icons
+        if (window.lucide) {
+            lucide.createIcons();
+        }
 
         if (job.output) {
             outputContent.textContent = job.output;
@@ -570,4 +580,76 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
+
+    // Expose copy function to global scope
+    window.copyFlags = function (btn) {
+        const flagsContent = document.getElementById('flagsContent');
+        if (!flagsContent) {
+            console.error('Element with id "flagsContent" not found');
+            return;
+        }
+
+        const text = flagsContent.textContent;
+        console.log('Attempting to copy:', text);
+
+        // Visual feedback helper
+        const showSuccess = () => {
+            btn.innerHTML = '<i data-lucide="check" style="width: 16px; height: 16px;"></i>';
+            btn.style.color = '#2ecc71';
+            if (window.lucide) lucide.createIcons();
+
+            setTimeout(() => {
+                btn.innerHTML = '<i data-lucide="copy" style="width: 16px; height: 16px;"></i>';
+                btn.style.color = '#888';
+                if (window.lucide) lucide.createIcons();
+            }, 2000);
+        };
+
+        const showError = (err) => {
+            console.error('Copy failed:', err);
+            btn.innerHTML = '<i data-lucide="x" style="width: 16px; height: 16px;"></i>';
+            btn.style.color = '#e74c3c';
+            if (window.lucide) lucide.createIcons();
+        };
+
+        // Try Clipboard API first
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text)
+                .then(showSuccess)
+                .catch(err => {
+                    console.warn('Clipboard API failed, trying fallback...', err);
+                    fallbackCopy(text);
+                });
+        } else {
+            console.log('Clipboard API unavailable, using fallback');
+            fallbackCopy(text);
+        }
+
+        function fallbackCopy(textToCopy) {
+            try {
+                const textArea = document.createElement("textarea");
+                textArea.value = textToCopy;
+
+                // Ensure it's not visible but part of the DOM
+                textArea.style.position = "fixed";
+                textArea.style.left = "-9999px";
+                textArea.style.top = "0";
+                document.body.appendChild(textArea);
+
+                textArea.focus();
+                textArea.select();
+
+                const successful = document.execCommand('copy');
+                document.body.removeChild(textArea);
+
+                if (successful) {
+                    showSuccess();
+                } else {
+                    throw new Error('execCommand returned false');
+                }
+            } catch (err) {
+                showError(err);
+            }
+        }
+    };
 });

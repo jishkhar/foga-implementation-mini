@@ -307,7 +307,31 @@ def parse_optimizer_output(optimizer: str, output: str) -> Dict:
             # Load comparison results
             if os.path.exists("comparison_results.json"):
                 with open("comparison_results.json", 'r') as f:
-                    result = json.load(f)
+                    comp_data = json.load(f)
+                    result.update(comp_data) # Include all comparison data
+                    
+                    # Extract winner metrics to top-level for UI consistency
+                    winner = comp_data.get('winner')
+                    if winner and winner != "NONE" and winner in comp_data:
+                        winner_data = comp_data[winner]
+                        result["best_time"] = winner_data.get("best_time")
+                        result["evaluations"] = winner_data.get("total_evaluations")
+                        result["enabled_flags"] = winner_data.get("enabled_flags", [])
+                    else:
+                        # Fallback: try to find the best time among all
+                        best_t = float('inf')
+                        best_method = None
+                        for m in ['FOGA', 'HBRF', 'XGBOOST']:
+                            if m in comp_data:
+                                t = comp_data[m].get('best_time', float('inf'))
+                                if t < best_t:
+                                    best_t = t
+                                    best_method = m
+                        
+                        if best_method:
+                            result["best_time"] = best_t
+                            result["evaluations"] = comp_data[best_method].get("total_evaluations")
+                            result["enabled_flags"] = comp_data[best_method].get("enabled_flags", [])
     
     except Exception as e:
         result["parse_error"] = str(e)

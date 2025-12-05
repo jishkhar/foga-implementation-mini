@@ -1,0 +1,1566 @@
+================================================================================
+🚀 STARTING COMPREHENSIVE OPTIMIZATION COMPARISON
+================================================================================
+Source file: uploads/0162b435-b085-41b5-9772-994d79fedded_matrix_multiply.c
+Started at: 2025-12-05 08:43:10
+================================================================================
+================================================================================
+🎯 RUNNING BASELINE BENCHMARKS (-O1, -O2, -O3)
+================================================================================
+  -O1: 0.001842s
+  -O2: 0.001733s
+  -O3: 0.001587s
+
+================================================================================
+🧬 RUNNING FOGA (Genetic Algorithm)
+================================================================================
+Detected GCC source file. Using 'gcc' compiler.
+Population size: 277
+Max generations: 10
+Execution timeout: 10s per test
+------------------------------------------------------------
+🚀 Starting FOGA optimization...
+Press Ctrl+C to stop early and get the best result so far
+
+Evaluating generation 1...
+Evaluating generation 1... [0/277]
+Evaluating generation 1... [10/277]
+Evaluating generation 1... [20/277]
+Evaluating generation 1... [30/277]
+Evaluating generation 1... [40/277]
+Evaluating generation 1... [50/277]
+Evaluating generation 1... [60/277]
+Evaluating generation 1... [70/277]
+Evaluating generation 1... [80/277]
+Evaluating generation 1... [90/277]
+Evaluating generation 1... [100/277]
+Evaluating generation 1... [110/277]
+Evaluating generation 1... [120/277]
+Evaluating generation 1... [130/277]
+Evaluating generation 1... [140/277]
+Evaluating generation 1... [150/277]
+Evaluating generation 1... [160/277]
+Evaluating generation 1... [170/277]
+Evaluating generation 1... [180/277]
+Evaluating generation 1... [190/277]
+Evaluating generation 1... [200/277]
+Evaluating generation 1... [210/277]
+Evaluating generation 1... [220/277]
+Evaluating generation 1... [230/277]
+Evaluating generation 1... [240/277]
+Evaluating generation 1... [250/277]
+Evaluating generation 1... [260/277]
+Evaluating generation 1... [270/277]
+Gen   1 | Valid: 277/277 | Best: 0.00145650s | Avg: 0.0016s
+Evaluating generation 2...
+Evaluating generation 2... [0/277]
+Evaluating generation 2... [10/277]
+Evaluating generation 2... [20/277]
+Evaluating generation 2... [30/277]
+Evaluating generation 2... [40/277]
+Evaluating generation 2... [50/277]
+Evaluating generation 2... [60/277]
+Evaluating generation 2... [70/277]
+Evaluating generation 2... [80/277]
+Evaluating generation 2... [90/277]
+Evaluating generation 2... [100/277]
+Evaluating generation 2... [110/277]
+Evaluating generation 2... [120/277]
+Evaluating generation 2... [130/277]
+Evaluating generation 2... [140/277]
+Evaluating generation 2... [150/277]
+Evaluating generation 2... [160/277]
+Evaluating generation 2... [170/277]
+Evaluating generation 2... [180/277]
+Evaluating generation 2... [190/277]
+Evaluating generation 2... [200/277]
+Evaluating generation 2... [210/277]
+Evaluating generation 2... [220/277]
+Evaluating generation 2... [230/277]
+Evaluating generation 2... [240/277]
+Evaluating generation 2... [250/277]
+Evaluating generation 2... [260/277]
+Evaluating generation 2... [270/277]
+Gen   2 | Valid: 277/277 | Best: 0.00141573s | Avg: 0.0016s
+Evaluating generation 3...
+Evaluating generation 3... [0/277]
+Evaluating generation 3... [10/277]
+Evaluating generation 3... [20/277]
+Evaluating generation 3... [30/277]
+Evaluating generation 3... [40/277]
+Evaluating generation 3... [50/277]
+Evaluating generation 3... [60/277]
+Evaluating generation 3... [70/277]
+Evaluating generation 3... [80/277]
+Evaluating generation 3... [90/277]
+Evaluating generation 3... [100/277]
+Evaluating generation 3... [110/277]
+Evaluating generation 3... [120/277]
+Evaluating generation 3... [130/277]
+Evaluating generation 3... [140/277]
+Evaluating generation 3... [150/277]
+Evaluating generation 3... [160/277]
+Evaluating generation 3... [170/277]
+Evaluating generation 3... [180/277]
+Evaluating generation 3... [190/277]
+Evaluating generation 3... [200/277]
+Evaluating generation 3... [210/277]
+Evaluating generation 3... [220/277]
+Evaluating generation 3... [230/277]
+Evaluating generation 3... [240/277]
+Evaluating generation 3... [250/277]
+Evaluating generation 3... [260/277]
+Evaluating generation 3... [270/277]
+Gen   3 | Valid: 277/277 | Best: 0.00141573s | Avg: 0.0016s
+Evaluating generation 4...
+Evaluating generation 4... [0/277]
+Evaluating generation 4... [10/277]
+Evaluating generation 4... [20/277]
+Evaluating generation 4... [30/277]
+Evaluating generation 4... [40/277]
+Evaluating generation 4... [50/277]
+Evaluating generation 4... [60/277]
+Evaluating generation 4... [70/277]
+Evaluating generation 4... [80/277]
+Evaluating generation 4... [90/277]
+Evaluating generation 4... [100/277]
+Evaluating generation 4... [110/277]
+Evaluating generation 4... [120/277]
+Evaluating generation 4... [130/277]
+Evaluating generation 4... [140/277]
+Evaluating generation 4... [150/277]
+Evaluating generation 4... [160/277]
+Evaluating generation 4... [170/277]
+Evaluating generation 4... [180/277]
+Evaluating generation 4... [190/277]
+Evaluating generation 4... [200/277]
+Evaluating generation 4... [210/277]
+Evaluating generation 4... [220/277]
+Evaluating generation 4... [230/277]
+Evaluating generation 4... [240/277]
+Evaluating generation 4... [250/277]
+Evaluating generation 4... [260/277]
+Evaluating generation 4... [270/277]
+Gen   4 | Valid: 277/277 | Best: 0.00141573s | Avg: 0.0016s
+Evaluating generation 5...
+Evaluating generation 5... [0/277]
+Evaluating generation 5... [10/277]
+Evaluating generation 5... [20/277]
+Evaluating generation 5... [30/277]
+Evaluating generation 5... [40/277]
+Evaluating generation 5... [50/277]
+Evaluating generation 5... [60/277]
+Evaluating generation 5... [70/277]
+Evaluating generation 5... [80/277]
+Evaluating generation 5... [90/277]
+Evaluating generation 5... [100/277]
+Evaluating generation 5... [110/277]
+Evaluating generation 5... [120/277]
+Evaluating generation 5... [130/277]
+Evaluating generation 5... [140/277]
+Evaluating generation 5... [150/277]
+Evaluating generation 5... [160/277]
+Evaluating generation 5... [170/277]
+Evaluating generation 5... [180/277]
+Evaluating generation 5... [190/277]
+Evaluating generation 5... [200/277]
+Evaluating generation 5... [210/277]
+Evaluating generation 5... [220/277]
+Evaluating generation 5... [230/277]
+Evaluating generation 5... [240/277]
+Evaluating generation 5... [250/277]
+Evaluating generation 5... [260/277]
+Evaluating generation 5... [270/277]
+Gen   5 | Valid: 277/277 | Best: 0.00141573s | Avg: 0.0016s
+Evaluating generation 6...
+Evaluating generation 6... [0/277]
+Evaluating generation 6... [10/277]
+Evaluating generation 6... [20/277]
+Evaluating generation 6... [30/277]
+Evaluating generation 6... [40/277]
+Evaluating generation 6... [50/277]
+Evaluating generation 6... [60/277]
+Evaluating generation 6... [70/277]
+Evaluating generation 6... [80/277]
+Evaluating generation 6... [90/277]
+Evaluating generation 6... [100/277]
+Evaluating generation 6... [110/277]
+Evaluating generation 6... [120/277]
+Evaluating generation 6... [130/277]
+Evaluating generation 6... [140/277]
+Evaluating generation 6... [150/277]
+Evaluating generation 6... [160/277]
+Evaluating generation 6... [170/277]
+Evaluating generation 6... [180/277]
+Evaluating generation 6... [190/277]
+Evaluating generation 6... [200/277]
+Evaluating generation 6... [210/277]
+Evaluating generation 6... [220/277]
+Evaluating generation 6... [230/277]
+Evaluating generation 6... [240/277]
+Evaluating generation 6... [250/277]
+Evaluating generation 6... [260/277]
+Evaluating generation 6... [270/277]
+Gen   6 | Valid: 277/277 | Best: 0.00141573s | Avg: 0.0016s
+Evaluating generation 7...
+Evaluating generation 7... [0/277]
+Evaluating generation 7... [10/277]
+Evaluating generation 7... [20/277]
+Evaluating generation 7... [30/277]
+Evaluating generation 7... [40/277]
+Evaluating generation 7... [50/277]
+Evaluating generation 7... [60/277]
+Evaluating generation 7... [70/277]
+Evaluating generation 7... [80/277]
+Evaluating generation 7... [90/277]
+Evaluating generation 7... [100/277]
+Evaluating generation 7... [110/277]
+Evaluating generation 7... [120/277]
+Evaluating generation 7... [130/277]
+Evaluating generation 7... [140/277]
+Evaluating generation 7... [150/277]
+Evaluating generation 7... [160/277]
+Evaluating generation 7... [170/277]
+Evaluating generation 7... [180/277]
+Evaluating generation 7... [190/277]
+Evaluating generation 7... [200/277]
+Evaluating generation 7... [210/277]
+Evaluating generation 7... [220/277]
+Evaluating generation 7... [230/277]
+Evaluating generation 7... [240/277]
+Evaluating generation 7... [250/277]
+Evaluating generation 7... [260/277]
+Evaluating generation 7... [270/277]
+Gen   7 | Valid: 277/277 | Best: 0.00141573s | Avg: 0.0016s
+Evaluating generation 8...
+Evaluating generation 8... [0/277]
+Evaluating generation 8... [10/277]
+Evaluating generation 8... [20/277]
+Evaluating generation 8... [30/277]
+Evaluating generation 8... [40/277]
+Evaluating generation 8... [50/277]
+Evaluating generation 8... [60/277]
+Evaluating generation 8... [70/277]
+Evaluating generation 8... [80/277]
+Evaluating generation 8... [90/277]
+Evaluating generation 8... [100/277]
+Evaluating generation 8... [110/277]
+Evaluating generation 8... [120/277]
+Evaluating generation 8... [130/277]
+Evaluating generation 8... [140/277]
+Evaluating generation 8... [150/277]
+Evaluating generation 8... [160/277]
+Evaluating generation 8... [170/277]
+Evaluating generation 8... [180/277]
+Evaluating generation 8... [190/277]
+Evaluating generation 8... [200/277]
+Evaluating generation 8... [210/277]
+Evaluating generation 8... [220/277]
+Evaluating generation 8... [230/277]
+Evaluating generation 8... [240/277]
+Evaluating generation 8... [250/277]
+Evaluating generation 8... [260/277]
+Evaluating generation 8... [270/277]
+Gen   8 | Valid: 277/277 | Best: 0.00141573s | Avg: 0.0016s
+Evaluating generation 9...
+Evaluating generation 9... [0/277]
+Evaluating generation 9... [10/277]
+Evaluating generation 9... [20/277]
+Evaluating generation 9... [30/277]
+Evaluating generation 9... [40/277]
+Evaluating generation 9... [50/277]
+Evaluating generation 9... [60/277]
+Evaluating generation 9... [70/277]
+Evaluating generation 9... [80/277]
+Evaluating generation 9... [90/277]
+Evaluating generation 9... [100/277]
+Evaluating generation 9... [110/277]
+Evaluating generation 9... [120/277]
+Evaluating generation 9... [130/277]
+Evaluating generation 9... [140/277]
+Evaluating generation 9... [150/277]
+Evaluating generation 9... [160/277]
+Evaluating generation 9... [170/277]
+Evaluating generation 9... [180/277]
+Evaluating generation 9... [190/277]
+Evaluating generation 9... [200/277]
+Evaluating generation 9... [210/277]
+Evaluating generation 9... [220/277]
+Evaluating generation 9... [230/277]
+Evaluating generation 9... [240/277]
+Evaluating generation 9... [250/277]
+Evaluating generation 9... [260/277]
+Evaluating generation 9... [270/277]
+Gen   9 | Valid: 277/277 | Best: 0.00141573s | Avg: 0.0016s
+Evaluating generation 10...
+Evaluating generation 10... [0/277]
+Evaluating generation 10... [10/277]
+Evaluating generation 10... [20/277]
+Evaluating generation 10... [30/277]
+Evaluating generation 10... [40/277]
+Evaluating generation 10... [50/277]
+Evaluating generation 10... [60/277]
+Evaluating generation 10... [70/277]
+Evaluating generation 10... [80/277]
+Evaluating generation 10... [90/277]
+Evaluating generation 10... [100/277]
+Evaluating generation 10... [110/277]
+Evaluating generation 10... [120/277]
+Evaluating generation 10... [130/277]
+Evaluating generation 10... [140/277]
+Evaluating generation 10... [150/277]
+Evaluating generation 10... [160/277]
+Evaluating generation 10... [170/277]
+Evaluating generation 10... [180/277]
+Evaluating generation 10... [190/277]
+Evaluating generation 10... [200/277]
+Evaluating generation 10... [210/277]
+Evaluating generation 10... [220/277]
+Evaluating generation 10... [230/277]
+Evaluating generation 10... [240/277]
+Evaluating generation 10... [250/277]
+Evaluating generation 10... [260/277]
+Evaluating generation 10... [270/277]
+Gen  10 | Valid: 277/277 | Best: 0.00141573s | Avg: 0.0016s
+
+============================================================
+✅ OPTIMIZATION COMPLETE
+============================================================
+
+🏆 Best Execution Time: 0.001416 seconds
+
+📋 Enabled Flags (36 total):
+   1. -faggressive-loop-optimizations
+   2. -fassociative-math
+   3. -fcaller-saves
+   4. -fcombine-stack-adjustments
+   5. -fcx-limited-range
+   6. -fdelete-null-pointer-checks
+   7. -fdse
+   8. -fexceptions
+   9. -fipa-cp-clone
+  10. -fipa-icf
+  11. -fipa-modref
+  12. -fipa-pure-const
+  13. -fipa-sra
+  14. -fjump-tables
+  15. -flive-range-shrinkage
+  16. -fmove-loop-invariants
+  17. -fpeel-loops
+  18. -free
+  19. -frename-registers
+  20. -frerun-cse-after-loop
+  21. -fsched-spec
+  22. -fsection-anchors
+  23. -fsplit-paths
+  24. -fstrict-aliasing
+  25. -fthread-jumps
+  26. -ftrapv
+  27. -ftree-dce
+  28. -ftree-dominator-opts
+  29. -ftree-dse
+  30. -ftree-forwprop
+  31. -ftree-fre
+  32. -ftree-loop-optimize
+  33. -ftree-pre
+  34. -ftree-vrp
+  35. -funswitch-loops
+  36. -fweb
+
+💻 Optimal Compilation Command:
+gcc -O3 uploads/0162b435-b085-41b5-9772-994d79fedded_matrix_multiply.c -faggressive-loop-optimizations -fassociative-math -fcaller-saves -fcombine-stack-adjustments -fcx-limited-range -fdelete-null-pointer-checks -fdse -fexceptions -fipa-cp-clone -fipa-icf -fipa-modref -fipa-pure-const -fipa-sra -fjump-tables -flive-range-shrinkage -fmove-loop-invariants -fpeel-loops -free -frename-registers -frerun-cse-after-loop -fsched-spec -fsection-anchors -fsplit-paths -fstrict-aliasing -fthread-jumps -ftrapv -ftree-dce -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre -ftree-loop-optimize -ftree-pre -ftree-vrp -funswitch-loops -fweb -o optimized_binary
+
+🔨 Creating optimized binary...
+✅ Optimized binary created successfully: ./optimized_binary
+📄 Results saved to: foga_results.json
+
+------------------------------------------------------------
+📊 BENCHMARKING COMPARISON
+------------------------------------------------------------
+Running benchmarks for standard optimization levels...
+  - -O1: 0.001667s
+  - -O2: 0.001843s
+  - -O3: 0.001903s
+
+============================================================
+| Optimization    | Execution Time (s)   | Improvement vs -O3     |
+|-----------------|----------------------|------------------------|
+| -O1             | 0.001667             | +12.41%                |
+| -O2             | 0.001843             | +3.11%                 |
+| -O3             | 0.001903             | +0.00%                 |
+| FOGA (Best)     | 0.001416             | +25.59%                |
+============================================================
+
+================================================================================
+🚩 OPTIMIZATION FLAGS COMPARISON
+================================================================================
+
+Querying compiler for optimization flags...
+
+📊 Flag Count Summary:
+  -O1:        93 flags enabled
+  -O2:        141 flags enabled
+  -O3:        154 flags enabled
+  FOGA:       36 flags enabled
+
+📋 Detailed Flag Breakdown:
+--------------------------------------------------------------------------------
+Flag                                          | O1    | O2    | O3    | FOGA
+--------------------------------------------------------------------------------
+-faggressive-loop-optimizations               |   ✓   |   ✓   |   ✓   |   ✓
+-falign-functions                             |   ✗   |   ✓   |   ✓   |   ✗
+-falign-jumps                                 |   ✗   |   ✓   |   ✓   |   ✗
+-falign-labels                                |   ✗   |   ✓   |   ✓   |   ✗
+-falign-loops                                 |   ✗   |   ✓   |   ✓   |   ✗
+-fallocation-dce                              |   ✓   |   ✓   |   ✓   |   ✗
+-fassociative-math                            |   ✗   |   ✗   |   ✗   |   ✓
+-fasynchronous-unwind-tables                  |   ✓   |   ✓   |   ✓   |   ✗
+-fauto-inc-dec                                |   ✓   |   ✓   |   ✓   |   ✗
+-fbit-tests                                   |   ✓   |   ✓   |   ✓   |   ✗
+-fbranch-count-reg                            |   ✓   |   ✓   |   ✓   |   ✗
+-fcaller-saves                                |   ✗   |   ✓   |   ✓   |   ✓
+-fcode-hoisting                               |   ✗   |   ✓   |   ✓   |   ✗
+-fcombine-stack-adjustments                   |   ✓   |   ✓   |   ✓   |   ✓
+-fcompare-elim                                |   ✓   |   ✓   |   ✓   |   ✗
+-fcprop-registers                             |   ✓   |   ✓   |   ✓   |   ✗
+-fcrossjumping                                |   ✗   |   ✓   |   ✓   |   ✗
+-fcse-follow-jumps                            |   ✗   |   ✓   |   ✓   |   ✗
+-fcx-limited-range                            |   ✗   |   ✗   |   ✗   |   ✓
+-fdce                                         |   ✓   |   ✓   |   ✓   |   ✗
+-fdefer-pop                                   |   ✓   |   ✓   |   ✓   |   ✗
+-fdelete-null-pointer-checks                  |   ✗   |   ✗   |   ✗   |   ✓
+-fdevirtualize                                |   ✗   |   ✓   |   ✓   |   ✗
+-fdevirtualize-speculatively                  |   ✗   |   ✓   |   ✓   |   ✗
+-fdse                                         |   ✓   |   ✓   |   ✓   |   ✓
+-fearly-inlining                              |   ✓   |   ✓   |   ✓   |   ✗
+-fexceptions                                  |   ✗   |   ✗   |   ✗   |   ✓
+-fexpensive-optimizations                     |   ✗   |   ✓   |   ✓   |   ✗
+-fext-dce                                     |   ✗   |   ✓   |   ✓   |   ✗
+-ffold-mem-offsets                            |   ✓   |   ✓   |   ✓   |   ✗
+-fforward-propagate                           |   ✓   |   ✓   |   ✓   |   ✗
+-ffp-int-builtin-inexact                      |   ✓   |   ✓   |   ✓   |   ✗
+-ffunction-cse                                |   ✓   |   ✓   |   ✓   |   ✗
+-fgcse                                        |   ✗   |   ✓   |   ✓   |   ✗
+-fgcse-after-reload                           |   ✗   |   ✗   |   ✓   |   ✗
+-fgcse-lm                                     |   ✓   |   ✓   |   ✓   |   ✗
+-fguess-branch-probability                    |   ✓   |   ✓   |   ✓   |   ✗
+-fhoist-adjacent-loads                        |   ✗   |   ✓   |   ✓   |   ✗
+-fif-conversion                               |   ✓   |   ✓   |   ✓   |   ✗
+-fif-conversion2                              |   ✓   |   ✓   |   ✓   |   ✗
+-findirect-inlining                           |   ✗   |   ✓   |   ✓   |   ✗
+-finline                                      |   ✓   |   ✓   |   ✓   |   ✗
+-finline-atomics                              |   ✓   |   ✓   |   ✓   |   ✗
+-finline-functions                            |   ✗   |   ✓   |   ✓   |   ✗
+-finline-functions-called-once                |   ✓   |   ✓   |   ✓   |   ✗
+-finline-small-functions                      |   ✗   |   ✓   |   ✓   |   ✗
+-fipa-bit-cp                                  |   ✗   |   ✓   |   ✓   |   ✗
+-fipa-cp                                      |   ✗   |   ✓   |   ✓   |   ✗
+-fipa-cp-clone                                |   ✗   |   ✗   |   ✓   |   ✓
+-fipa-icf                                     |   ✗   |   ✓   |   ✓   |   ✓
+-fipa-icf-functions                           |   ✗   |   ✓   |   ✓   |   ✗
+-fipa-icf-variables                           |   ✗   |   ✓   |   ✓   |   ✗
+-fipa-modref                                  |   ✓   |   ✓   |   ✓   |   ✓
+-fipa-profile                                 |   ✓   |   ✓   |   ✓   |   ✗
+-fipa-pure-const                              |   ✓   |   ✓   |   ✓   |   ✓
+-fipa-ra                                      |   ✗   |   ✓   |   ✓   |   ✗
+-fipa-reference                               |   ✓   |   ✓   |   ✓   |   ✗
+-fipa-reference-addressable                   |   ✓   |   ✓   |   ✓   |   ✗
+-fipa-sra                                     |   ✗   |   ✓   |   ✓   |   ✓
+-fipa-stack-alignment                         |   ✓   |   ✓   |   ✓   |   ✗
+-fipa-strict-aliasing                         |   ✓   |   ✓   |   ✓   |   ✗
+-fipa-vrp                                     |   ✗   |   ✓   |   ✓   |   ✗
+-fira-hoist-pressure                          |   ✓   |   ✓   |   ✓   |   ✗
+-fira-share-save-slots                        |   ✓   |   ✓   |   ✓   |   ✗
+-fira-share-spill-slots                       |   ✓   |   ✓   |   ✓   |   ✗
+-fisolate-erroneous-paths-dereference         |   ✗   |   ✓   |   ✓   |   ✗
+-fivopts                                      |   ✓   |   ✓   |   ✓   |   ✗
+-fjump-tables                                 |   ✓   |   ✓   |   ✓   |   ✓
+-flate-combine-instructions                   |   ✗   |   ✓   |   ✓   |   ✗
+-flifetime-dse                                |   ✓   |   ✓   |   ✓   |   ✗
+-flive-range-shrinkage                        |   ✗   |   ✗   |   ✗   |   ✓
+-floop-interchange                            |   ✗   |   ✗   |   ✓   |   ✗
+-floop-unroll-and-jam                         |   ✗   |   ✗   |   ✓   |   ✗
+-flra-remat                                   |   ✗   |   ✓   |   ✓   |   ✗
+-fmalloc-dce                                  |   ✓   |   ✓   |   ✓   |   ✗
+-fmath-errno                                  |   ✓   |   ✓   |   ✓   |   ✗
+-fmove-loop-invariants                        |   ✓   |   ✓   |   ✓   |   ✓
+-fmove-loop-stores                            |   ✓   |   ✓   |   ✓   |   ✗
+-fno-inline-stringops                         |   ✓   |   ✓   |   ✓   |   ✗
+-fomit-frame-pointer                          |   ✓   |   ✓   |   ✓   |   ✗
+-foptimize-crc                                |   ✗   |   ✓   |   ✓   |   ✗
+-foptimize-sibling-calls                      |   ✗   |   ✓   |   ✓   |   ✗
+-foptimize-strlen                             |   ✗   |   ✓   |   ✓   |   ✗
+-fpartial-inlining                            |   ✗   |   ✓   |   ✓   |   ✗
+-fpeel-loops                                  |   ✗   |   ✗   |   ✓   |   ✓
+-fpeephole                                    |   ✓   |   ✓   |   ✓   |   ✗
+-fpeephole2                                   |   ✗   |   ✓   |   ✓   |   ✗
+-fplt                                         |   ✓   |   ✓   |   ✓   |   ✗
+-fpredictive-commoning                        |   ✗   |   ✗   |   ✓   |   ✗
+-fprintf-return-value                         |   ✓   |   ✓   |   ✓   |   ✗
+-free                                         |   ✗   |   ✓   |   ✓   |   ✓
+-frename-registers                            |   ✗   |   ✗   |   ✗   |   ✓
+-freorder-blocks                              |   ✓   |   ✓   |   ✓   |   ✗
+-freorder-blocks-and-partition                |   ✗   |   ✓   |   ✓   |   ✗
+-freorder-functions                           |   ✗   |   ✓   |   ✓   |   ✗
+-frerun-cse-after-loop                        |   ✗   |   ✓   |   ✓   |   ✓
+-fsched-critical-path-heuristic               |   ✓   |   ✓   |   ✓   |   ✗
+-fsched-dep-count-heuristic                   |   ✓   |   ✓   |   ✓   |   ✗
+-fsched-group-heuristic                       |   ✓   |   ✓   |   ✓   |   ✗
+-fsched-interblock                            |   ✓   |   ✓   |   ✓   |   ✗
+-fsched-last-insn-heuristic                   |   ✓   |   ✓   |   ✓   |   ✗
+-fsched-rank-heuristic                        |   ✓   |   ✓   |   ✓   |   ✗
+-fsched-spec                                  |   ✓   |   ✓   |   ✓   |   ✓
+-fsched-spec-insn-heuristic                   |   ✓   |   ✓   |   ✓   |   ✗
+-fsched-stalled-insns-dep                     |   ✓   |   ✓   |   ✓   |   ✗
+-fschedule-fusion                             |   ✓   |   ✓   |   ✓   |   ✗
+-fschedule-insns2                             |   ✗   |   ✓   |   ✓   |   ✗
+-fsection-anchors                             |   ✗   |   ✗   |   ✗   |   ✓
+-fsemantic-interposition                      |   ✓   |   ✓   |   ✓   |   ✗
+-fshrink-wrap                                 |   ✓   |   ✓   |   ✓   |   ✗
+-fshrink-wrap-separate                        |   ✓   |   ✓   |   ✓   |   ✗
+-fsigned-zeros                                |   ✓   |   ✓   |   ✓   |   ✗
+-fsplit-ivs-in-unroller                       |   ✓   |   ✓   |   ✓   |   ✗
+-fsplit-loops                                 |   ✗   |   ✗   |   ✓   |   ✗
+-fsplit-paths                                 |   ✗   |   ✗   |   ✓   |   ✓
+-fsplit-wide-types                            |   ✓   |   ✓   |   ✓   |   ✗
+-fssa-backprop                                |   ✓   |   ✓   |   ✓   |   ✗
+-fssa-phiopt                                  |   ✓   |   ✓   |   ✓   |   ✗
+-fstack-protector-strong                      |   ✓   |   ✓   |   ✓   |   ✗
+-fstdarg-opt                                  |   ✓   |   ✓   |   ✓   |   ✗
+-fstore-merging                               |   ✗   |   ✓   |   ✓   |   ✗
+-fstrict-aliasing                             |   ✗   |   ✓   |   ✓   |   ✓
+-fthread-jumps                                |   ✓   |   ✓   |   ✓   |   ✓
+-ftoplevel-reorder                            |   ✓   |   ✓   |   ✓   |   ✗
+-ftrapping-math                               |   ✓   |   ✓   |   ✓   |   ✗
+-ftrapv                                       |   ✗   |   ✗   |   ✗   |   ✓
+-ftree-bit-ccp                                |   ✓   |   ✓   |   ✓   |   ✗
+-ftree-builtin-call-dce                       |   ✓   |   ✓   |   ✓   |   ✗
+-ftree-ccp                                    |   ✓   |   ✓   |   ✓   |   ✗
+-ftree-ch                                     |   ✓   |   ✓   |   ✓   |   ✗
+-ftree-coalesce-vars                          |   ✓   |   ✓   |   ✓   |   ✗
+-ftree-copy-prop                              |   ✓   |   ✓   |   ✓   |   ✗
+-ftree-dce                                    |   ✓   |   ✓   |   ✓   |   ✓
+-ftree-dominator-opts                         |   ✓   |   ✓   |   ✓   |   ✓
+-ftree-dse                                    |   ✓   |   ✓   |   ✓   |   ✓
+-ftree-forwprop                               |   ✓   |   ✓   |   ✓   |   ✓
+-ftree-fre                                    |   ✓   |   ✓   |   ✓   |   ✓
+-ftree-loop-distribute-patterns               |   ✗   |   ✓   |   ✓   |   ✗
+-ftree-loop-distribution                      |   ✗   |   ✗   |   ✓   |   ✗
+-ftree-loop-im                                |   ✓   |   ✓   |   ✓   |   ✗
+-ftree-loop-ivcanon                           |   ✓   |   ✓   |   ✓   |   ✗
+-ftree-loop-optimize                          |   ✓   |   ✓   |   ✓   |   ✓
+-ftree-loop-vectorize                         |   ✗   |   ✓   |   ✓   |   ✗
+-ftree-partial-pre                            |   ✗   |   ✗   |   ✓   |   ✗
+-ftree-phiprop                                |   ✓   |   ✓   |   ✓   |   ✗
+-ftree-pre                                    |   ✗   |   ✓   |   ✓   |   ✓
+-ftree-pta                                    |   ✓   |   ✓   |   ✓   |   ✗
+-ftree-reassoc                                |   ✓   |   ✓   |   ✓   |   ✗
+-ftree-scev-cprop                             |   ✓   |   ✓   |   ✓   |   ✗
+-ftree-sink                                   |   ✓   |   ✓   |   ✓   |   ✗
+-ftree-slp-vectorize                          |   ✗   |   ✓   |   ✓   |   ✗
+-ftree-slsr                                   |   ✓   |   ✓   |   ✓   |   ✗
+-ftree-sra                                    |   ✓   |   ✓   |   ✓   |   ✗
+-ftree-switch-conversion                      |   ✗   |   ✓   |   ✓   |   ✗
+-ftree-tail-merge                             |   ✗   |   ✓   |   ✓   |   ✗
+-ftree-ter                                    |   ✓   |   ✓   |   ✓   |   ✗
+-ftree-vrp                                    |   ✗   |   ✓   |   ✓   |   ✓
+-funroll-completely-grow-size                 |   ✗   |   ✗   |   ✓   |   ✗
+-funroll-loops                                |   ✗   |   ✓   |   ✓   |   ✗
+-funswitch-loops                              |   ✗   |   ✗   |   ✓   |   ✓
+-funwind-tables                               |   ✓   |   ✓   |   ✓   |   ✗
+-fversion-loops-for-strides                   |   ✗   |   ✗   |   ✓   |   ✗
+-fweb                                         |   ✗   |   ✗   |   ✗   |   ✓
+--------------------------------------------------------------------------------
+
+✨ FOGA-Specific Flags (not in -O3): 9
+   1. -fassociative-math
+   2. -fcx-limited-range
+   3. -fdelete-null-pointer-checks
+   4. -fexceptions
+   5. -flive-range-shrinkage
+   6. -frename-registers
+   7. -fsection-anchors
+   8. -ftrapv
+   9. -fweb
+
+🔍 -O3 Flags Excluded by FOGA: 127
+   1. -falign-functions
+   2. -falign-jumps
+   3. -falign-labels
+   4. -falign-loops
+   5. -fallocation-dce
+   6. -fasynchronous-unwind-tables
+   7. -fauto-inc-dec
+   8. -fbit-tests
+   9. -fbranch-count-reg
+  10. -fcode-hoisting
+  11. -fcompare-elim
+  12. -fcprop-registers
+  13. -fcrossjumping
+  14. -fcse-follow-jumps
+  15. -fdce
+  16. -fdefer-pop
+  17. -fdevirtualize
+  18. -fdevirtualize-speculatively
+  19. -fearly-inlining
+  20. -fexpensive-optimizations
+  21. -fext-dce
+  22. -ffold-mem-offsets
+  23. -fforward-propagate
+  24. -ffp-int-builtin-inexact
+  25. -ffunction-cse
+  26. -fgcse
+  27. -fgcse-after-reload
+  28. -fgcse-lm
+  29. -fguess-branch-probability
+  30. -fhoist-adjacent-loads
+  31. -fif-conversion
+  32. -fif-conversion2
+  33. -findirect-inlining
+  34. -finline
+  35. -finline-atomics
+  36. -finline-functions
+  37. -finline-functions-called-once
+  38. -finline-small-functions
+  39. -fipa-bit-cp
+  40. -fipa-cp
+  41. -fipa-icf-functions
+  42. -fipa-icf-variables
+  43. -fipa-profile
+  44. -fipa-ra
+  45. -fipa-reference
+  46. -fipa-reference-addressable
+  47. -fipa-stack-alignment
+  48. -fipa-strict-aliasing
+  49. -fipa-vrp
+  50. -fira-hoist-pressure
+  51. -fira-share-save-slots
+  52. -fira-share-spill-slots
+  53. -fisolate-erroneous-paths-dereference
+  54. -fivopts
+  55. -flate-combine-instructions
+  56. -flifetime-dse
+  57. -floop-interchange
+  58. -floop-unroll-and-jam
+  59. -flra-remat
+  60. -fmalloc-dce
+  61. -fmath-errno
+  62. -fmove-loop-stores
+  63. -fno-inline-stringops
+  64. -fomit-frame-pointer
+  65. -foptimize-crc
+  66. -foptimize-sibling-calls
+  67. -foptimize-strlen
+  68. -fpartial-inlining
+  69. -fpeephole
+  70. -fpeephole2
+  71. -fplt
+  72. -fpredictive-commoning
+  73. -fprintf-return-value
+  74. -freorder-blocks
+  75. -freorder-blocks-and-partition
+  76. -freorder-functions
+  77. -fsched-critical-path-heuristic
+  78. -fsched-dep-count-heuristic
+  79. -fsched-group-heuristic
+  80. -fsched-interblock
+  81. -fsched-last-insn-heuristic
+  82. -fsched-rank-heuristic
+  83. -fsched-spec-insn-heuristic
+  84. -fsched-stalled-insns-dep
+  85. -fschedule-fusion
+  86. -fschedule-insns2
+  87. -fsemantic-interposition
+  88. -fshrink-wrap
+  89. -fshrink-wrap-separate
+  90. -fsigned-zeros
+  91. -fsplit-ivs-in-unroller
+  92. -fsplit-loops
+  93. -fsplit-wide-types
+  94. -fssa-backprop
+  95. -fssa-phiopt
+  96. -fstack-protector-strong
+  97. -fstdarg-opt
+  98. -fstore-merging
+  99. -ftoplevel-reorder
+  100. -ftrapping-math
+  101. -ftree-bit-ccp
+  102. -ftree-builtin-call-dce
+  103. -ftree-ccp
+  104. -ftree-ch
+  105. -ftree-coalesce-vars
+  106. -ftree-copy-prop
+  107. -ftree-loop-distribute-patterns
+  108. -ftree-loop-distribution
+  109. -ftree-loop-im
+  110. -ftree-loop-ivcanon
+  111. -ftree-loop-vectorize
+  112. -ftree-partial-pre
+  113. -ftree-phiprop
+  114. -ftree-pta
+  115. -ftree-reassoc
+  116. -ftree-scev-cprop
+  117. -ftree-sink
+  118. -ftree-slp-vectorize
+  119. -ftree-slsr
+  120. -ftree-sra
+  121. -ftree-switch-conversion
+  122. -ftree-tail-merge
+  123. -ftree-ter
+  124. -funroll-completely-grow-size
+  125. -funroll-loops
+  126. -funwind-tables
+  127. -fversion-loops-for-strides
+
+================================================================================
+
+✅ FOGA Complete: 0.001416s in 182.38s
+
+================================================================================
+🔬 RUNNING HBRF (Hybrid Bayesian-RF)
+================================================================================
+======================================================================
+🔬 HYBRID BAYESIAN-RANDOM FOREST OPTIMIZER (HBRF)
+======================================================================
+Compiler: GCC
+Source: uploads/0162b435-b085-41b5-9772-994d79fedded_matrix_multiply.c
+Total flags in search space: 84
+
+Optimization Strategy:
+  Phase 1: Random sampling (100 configurations)
+  Phase 2: Feature importance analysis (top 20 flags)
+  Phase 3: Bayesian optimization (50 iterations)
+  Phase 4: Greedy refinement
+----------------------------------------------------------------------
+
+======================================================================
+📊 PHASE 1: Random Sampling
+======================================================================
+Sampling 1/100...
+Sampling 2/100...
+Sampling 3/100...
+Sampling 4/100...
+Sampling 5/100...
+Sampling 6/100...
+Sampling 7/100...
+Sampling 8/100...
+Sampling 9/100...
+Sampling 10/100...
+Sampling 11/100...
+Sampling 12/100...
+Sampling 13/100...
+Sampling 14/100...
+Sampling 15/100...
+Sampling 16/100...
+Sampling 17/100...
+Sampling 18/100...
+Sampling 19/100...
+Sampling 20/100...
+Sampling 21/100...
+Sampling 22/100...
+Sampling 23/100...
+Sampling 24/100...
+Sampling 25/100...
+Sampling 26/100...
+Sampling 27/100...
+Sampling 28/100...
+Sampling 29/100...
+Sampling 30/100...
+Sampling 31/100...
+Sampling 32/100...
+Sampling 33/100...
+Sampling 34/100...
+Sampling 35/100...
+Sampling 36/100...
+Sampling 37/100...
+Sampling 38/100...
+Sampling 39/100...
+Sampling 40/100...
+Sampling 41/100...
+Sampling 42/100...
+Sampling 43/100...
+Sampling 44/100...
+Sampling 45/100...
+Sampling 46/100...
+Sampling 47/100...
+Sampling 48/100...
+Sampling 49/100...
+Sampling 50/100...
+Sampling 51/100...
+Sampling 52/100...
+Sampling 53/100...
+Sampling 54/100...
+Sampling 55/100...
+Sampling 56/100...
+Sampling 57/100...
+Sampling 58/100...
+Sampling 59/100...
+Sampling 60/100...
+Sampling 61/100...
+Sampling 62/100...
+Sampling 63/100...
+Sampling 64/100...
+Sampling 65/100...
+Sampling 66/100...
+Sampling 67/100...
+Sampling 68/100...
+Sampling 69/100...
+Sampling 70/100...
+Sampling 71/100...
+Sampling 72/100...
+Sampling 73/100...
+Sampling 74/100...
+Sampling 75/100...
+Sampling 76/100...
+Sampling 77/100...
+Sampling 78/100...
+Sampling 79/100...
+Sampling 80/100...
+Sampling 81/100...
+Sampling 82/100...
+Sampling 83/100...
+Sampling 84/100...
+Sampling 85/100...
+Sampling 86/100...
+Sampling 87/100...
+Sampling 88/100...
+Sampling 89/100...
+Sampling 90/100...
+Sampling 91/100...
+Sampling 92/100...
+Sampling 93/100...
+Sampling 94/100...
+Sampling 95/100...
+Sampling 96/100...
+Sampling 97/100...
+Sampling 98/100...
+Sampling 99/100...
+Sampling 100/100...
+Collected 100 valid samples
+Best time so far: 0.001450s
+Average time: 0.001692s
+
+======================================================================
+🌲 PHASE 2: Random Forest Feature Importance Analysis
+======================================================================
+Training Random Forest model...
+
+📈 Top 20 Most Important Flags:
+----------------------------------------------------------------------
+   1. -fshort-enums                            | Importance: 0.0482
+   2. -fschedule-insns                         | Importance: 0.0453
+   3. -ftree-bit-ccp                           | Importance: 0.0323
+   4. -ffinite-math-only                       | Importance: 0.0287
+   5. -free                                    | Importance: 0.0260
+   6. -fwrapv                                  | Importance: 0.0232
+   7. -fsched-spec                             | Importance: 0.0224
+   8. -fcrossjumping                           | Importance: 0.0221
+   9. -falign-functions                        | Importance: 0.0220
+  10. -falign-loops                            | Importance: 0.0209
+  11. -fcompare-elim                           | Importance: 0.0200
+  12. -fdelete-null-pointer-checks             | Importance: 0.0196
+  13. -ffloat-store                            | Importance: 0.0195
+  14. -fconserve-stack                         | Importance: 0.0183
+  15. -ftree-copy-prop                         | Importance: 0.0182
+  16. -finline-functions                       | Importance: 0.0178
+  17. -ftree-loop-optimize                     | Importance: 0.0178
+  18. -funwind-tables                          | Importance: 0.0173
+  19. -ftree-dce                               | Importance: 0.0169
+  20. -ftree-slp-vectorize                     | Importance: 0.0157
+
+✓ Reduced search space from 2^84 to 2^20
+  Reduction factor: 1.84e+19
+
+======================================================================
+🎯 PHASE 3: Bayesian Optimization on Reduced Space
+======================================================================
+Running Bayesian Optimization for 50 iterations...
+BO Iteration 1: 0.002168s (Best: 0.001450s)
+BO Iteration 2: 0.001823s (Best: 0.001450s)
+BO Iteration 3: 0.002665s (Best: 0.001450s)
+BO Iteration 4: 0.001749s (Best: 0.001450s)
+BO Iteration 5: 0.001735s (Best: 0.001450s)
+BO Iteration 6: 0.001666s (Best: 0.001450s)
+BO Iteration 7: 0.001837s (Best: 0.001450s)
+BO Iteration 8: 0.001761s (Best: 0.001450s)
+BO Iteration 9: 0.001925s (Best: 0.001450s)
+BO Iteration 10: 0.001478s (Best: 0.001450s)
+BO Iteration 11: 0.001495s (Best: 0.001450s)
+BO Iteration 12: 0.001502s (Best: 0.001450s)
+BO Iteration 13: 0.001717s (Best: 0.001450s)
+BO Iteration 14: 0.001784s (Best: 0.001450s)
+BO Iteration 15: 0.001649s (Best: 0.001450s)
+BO Iteration 16: 0.001696s (Best: 0.001450s)
+BO Iteration 17: 0.001708s (Best: 0.001450s)
+BO Iteration 18: 0.001706s (Best: 0.001450s)
+BO Iteration 19: 0.001668s (Best: 0.001450s)
+BO Iteration 20: 0.001509s (Best: 0.001450s)
+BO Iteration 21: 0.001568s (Best: 0.001450s)
+BO Iteration 22: 0.001469s (Best: 0.001450s)
+BO Iteration 23: 0.001584s (Best: 0.001450s)
+BO Iteration 24: 0.001689s (Best: 0.001450s)
+BO Iteration 25: 0.001709s (Best: 0.001450s)
+BO Iteration 26: 0.001512s (Best: 0.001450s)
+BO Iteration 27: 0.001570s (Best: 0.001450s)
+BO Iteration 28: 0.001716s (Best: 0.001450s)
+BO Iteration 29: 0.001654s (Best: 0.001450s)
+BO Iteration 30: 0.001842s (Best: 0.001450s)
+BO Iteration 31: 0.001581s (Best: 0.001450s)
+BO Iteration 32: 0.001670s (Best: 0.001450s)
+BO Iteration 33: 0.001692s (Best: 0.001450s)
+BO Iteration 34: 0.001567s (Best: 0.001450s)
+BO Iteration 35: 0.001466s (Best: 0.001450s)
+BO Iteration 36: 0.001720s (Best: 0.001450s)
+BO Iteration 37: 0.001507s (Best: 0.001450s)
+BO Iteration 38: 0.001636s (Best: 0.001450s)
+BO Iteration 39: 0.001564s (Best: 0.001450s)
+BO Iteration 40: 0.001661s (Best: 0.001450s)
+BO Iteration 41: 0.001703s (Best: 0.001450s)
+BO Iteration 42: 0.001558s (Best: 0.001450s)
+BO Iteration 43: 0.001630s (Best: 0.001450s)
+BO Iteration 44: 0.001658s (Best: 0.001450s)
+BO Iteration 45: 0.001718s (Best: 0.001450s)
+BO Iteration 46: 0.001529s (Best: 0.001450s)
+BO Iteration 47: 0.001566s (Best: 0.001450s)
+BO Iteration 48: 0.001473s (Best: 0.001450s)
+BO Iteration 49: 0.001567s (Best: 0.001450s)
+BO Iteration 50: 0.001687s (Best: 0.001450s)
+✓ Bayesian Optimization complete
+  Best time found: 0.001450s
+  Total evaluations: 150
+
+======================================================================
+🔍 PHASE 4: Greedy Refinement
+======================================================================
+
+✓ Greedy refinement complete: 0 improvements found
+
+======================================================================
+✅ HBRF OPTIMIZATION COMPLETE
+======================================================================
+
+🏆 Best Execution Time: 0.001447 seconds
+⏱️  Total Optimization Time: 29.36 seconds
+📊 Total Evaluations: 170
+📈 Evaluations per second: 5.79
+
+📋 Enabled Flags (38 total):
+   1. -falign-functions                             | Importance: 0.0220
+   2. -falign-loops                                 | Importance: 0.0209
+   3. -fassociative-math
+   4. -fauto-inc-dec
+   5. -fcode-hoisting
+   6. -fcombine-stack-adjustments
+   7. -fcompare-elim                                | Importance: 0.0200
+   8. -fcprop-registers
+   9. -fcse-follow-jumps
+  10. -fcx-limited-range
+  11. -fdse
+  12. -fexceptions
+  13. -fipa-cp-clone
+  14. -fipa-icf
+  15. -fipa-sra
+  16. -fmove-loop-invariants
+  17. -fomit-frame-pointer
+  18. -free                                         | Importance: 0.0260
+  19. -frerun-cse-after-loop
+  20. -frounding-math
+  21. -fschedule-insns                              | Importance: 0.0453
+  22. -fsection-anchors
+  23. -fsplit-paths
+  24. -fthread-jumps
+  25. -ftrapv
+  26. -ftree-ccp
+  27. -ftree-dce                                    | Importance: 0.0169
+  28. -ftree-dominator-opts
+  29. -ftree-forwprop
+  30. -ftree-loop-optimize                          | Importance: 0.0178
+  31. -ftree-pre
+  32. -ftree-sra
+  33. -ftree-ter
+  34. -funswitch-loops
+  35. -funwind-tables                               | Importance: 0.0173
+  36. -fvar-tracking-assignments
+  37. -fweb
+  38. -fwrapv                                       | Importance: 0.0232
+
+💻 Optimal Compilation Command:
+gcc -O3 uploads/0162b435-b085-41b5-9772-994d79fedded_matrix_multiply.c -falign-functions -falign-loops -fassociative-math -fauto-inc-dec -fcode-hoisting -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fcse-follow-jumps -fcx-limited-range -fdse -fexceptions -fipa-cp-clone -fipa-icf -fipa-sra -fmove-loop-invariants -fomit-frame-pointer -free -frerun-cse-after-loop -frounding-math -fschedule-insns -fsection-anchors -fsplit-paths -fthread-jumps -ftrapv -ftree-ccp -ftree-dce -ftree-dominator-opts -ftree-forwprop -ftree-loop-optimize -ftree-pre -ftree-sra -ftree-ter -funswitch-loops -funwind-tables -fvar-tracking-assignments -fweb -fwrapv -o optimized_hbrf
+
+🔨 Creating optimized binary...
+✅ Optimized binary created: ./optimized_hbrf
+📄 Results saved to: hbrf_results.json
+
+✅ HBRF Complete: 0.001447s in 30.16s
+
+================================================================================
+⚡ RUNNING XGBOOST OPTIMIZER
+================================================================================
+======================================================================
+🚀 XGBoost Optimizer
+======================================================================
+Compiler: GCC
+Source: uploads/0162b435-b085-41b5-9772-994d79fedded_matrix_multiply.c
+Total flags in search space: 83
+
+======================================================================
+📊 PHASE 1: Random Sampling
+======================================================================
+Sampling 1/100...
+Sampling 2/100...
+Sampling 3/100...
+Sampling 4/100...
+Sampling 5/100...
+Sampling 6/100...
+Sampling 7/100...
+Sampling 8/100...
+Sampling 9/100...
+Sampling 10/100...
+Sampling 11/100...
+Sampling 12/100...
+Sampling 13/100...
+Sampling 14/100...
+Sampling 15/100...
+Sampling 16/100...
+Sampling 17/100...
+Sampling 18/100...
+Sampling 19/100...
+Sampling 20/100...
+Sampling 21/100...
+Sampling 22/100...
+Sampling 23/100...
+Sampling 24/100...
+Sampling 25/100...
+Sampling 26/100...
+Sampling 27/100...
+Sampling 28/100...
+Sampling 29/100...
+Sampling 30/100...
+Sampling 31/100...
+Sampling 32/100...
+Sampling 33/100...
+Sampling 34/100...
+Sampling 35/100...
+Sampling 36/100...
+Sampling 37/100...
+Sampling 38/100...
+Sampling 39/100...
+Sampling 40/100...
+Sampling 41/100...
+Sampling 42/100...
+Sampling 43/100...
+Sampling 44/100...
+Sampling 45/100...
+Sampling 46/100...
+Sampling 47/100...
+Sampling 48/100...
+Sampling 49/100...
+Sampling 50/100...
+Sampling 51/100...
+Sampling 52/100...
+Sampling 53/100...
+Sampling 54/100...
+Sampling 55/100...
+Sampling 56/100...
+Sampling 57/100...
+Sampling 58/100...
+Sampling 59/100...
+Sampling 60/100...
+Sampling 61/100...
+Sampling 62/100...
+Sampling 63/100...
+Sampling 64/100...
+Sampling 65/100...
+Sampling 66/100...
+Sampling 67/100...
+Sampling 68/100...
+Sampling 69/100...
+Sampling 70/100...
+Sampling 71/100...
+Sampling 72/100...
+Sampling 73/100...
+Sampling 74/100...
+Sampling 75/100...
+Sampling 76/100...
+Sampling 77/100...
+Sampling 78/100...
+Sampling 79/100...
+Sampling 80/100...
+Sampling 81/100...
+Sampling 82/100...
+Sampling 83/100...
+Sampling 84/100...
+Sampling 85/100...
+Sampling 86/100...
+Sampling 87/100...
+Sampling 88/100...
+Sampling 89/100...
+Sampling 90/100...
+Sampling 91/100...
+Sampling 92/100...
+Sampling 93/100...
+Sampling 94/100...
+Sampling 95/100...
+Sampling 96/100...
+Sampling 97/100...
+Sampling 98/100...
+Sampling 99/100...
+Sampling 100/100...
+Collected 100 valid samples
+Best time so far: 0.001466s
+
+======================================================================
+🤖 PHASE 2: Training XGBoost Model
+======================================================================
+XGBoost model trained successfully.
+
+======================================================================
+🚀 PHASE 3: XGBoost Guided Optimization
+======================================================================
+Iteration 1/50: Best: 0.001466s
+Iteration 2/50: Best: 0.001466s
+Iteration 3/50: Best: 0.001466s
+Iteration 4/50: Best: 0.001466s
+Iteration 5/50: Best: 0.001466s
+Iteration 6/50: Best: 0.001466s
+Iteration 7/50: Best: 0.001466s
+Iteration 8/50: Best: 0.001466s
+Iteration 9/50: Best: 0.001466s
+Iteration 10/50: Best: 0.001466s
+Iteration 11/50: Best: 0.001466s
+Iteration 12/50: Best: 0.001466s
+Iteration 13/50: Best: 0.001466s
+Iteration 14/50: Best: 0.001466s
+Iteration 15/50: Best: 0.001466s
+Iteration 16/50: Best: 0.001466s
+Iteration 17/50: Best: 0.001466s
+Iteration 18/50: Best: 0.001466s
+Iteration 19/50: Best: 0.001466s
+Iteration 20/50: Best: 0.001466s
+Iteration 21/50: Best: 0.001466s
+Iteration 22/50: Best: 0.001466s
+Iteration 23/50: Best: 0.001466s
+Iteration 24/50: Best: 0.001466s
+Iteration 25/50: Best: 0.001466s
+Iteration 26/50: Best: 0.001466s
+Iteration 27/50: Best: 0.001466s
+Iteration 28/50: Best: 0.001466s
+Iteration 29/50: Best: 0.001466s
+Iteration 30/50: Best: 0.001466s
+Iteration 31/50: Best: 0.001466s
+Iteration 32/50: Best: 0.001466s
+Iteration 33/50: Best: 0.001466s
+Iteration 34/50: Best: 0.001466s
+Iteration 35/50: Best: 0.001466s
+Iteration 36/50: Best: 0.001466s
+Iteration 37/50: Best: 0.001466s
+Iteration 38/50: Best: 0.001466s
+Iteration 39/50: Best: 0.001466s
+Iteration 40/50: Best: 0.001466s
+Iteration 41/50: Best: 0.001466s
+Iteration 42/50: Best: 0.001466s
+Iteration 43/50: Best: 0.001466s
+Iteration 44/50: Best: 0.001466s
+Iteration 45/50: Best: 0.001466s
+Iteration 46/50: Best: 0.001466s
+Iteration 47/50: Best: 0.001466s
+Iteration 48/50: Best: 0.001466s
+Iteration 49/50: Best: 0.001466s
+Iteration 50/50: Best: 0.001466s
+
+✅ Optimization complete.
+
+======================================================================
+✅ XGBOOST OPTIMIZATION COMPLETE
+======================================================================
+
+🏆 Best Execution Time: 0.001466 seconds
+⏱️  Total Optimization Time: 7.95 seconds
+📊 Total Evaluations: 100
+
+📋 Enabled Flags (46 total):
+   1. -falign-jumps
+   2. -falign-labels
+   3. -falign-loops
+   4. -fassociative-math
+   5. -fbranch-probabilities
+   6. -fcaller-saves
+   7. -fcode-hoisting
+   8. -fcompare-elim
+   9. -fcrossjumping
+  10. -fcse-follow-jumps
+  11. -fdce
+  12. -fdelayed-branch
+  13. -fdevirtualize
+  14. -fearly-inlining
+  15. -fexceptions
+  16. -ffast-math
+  17. -ffloat-store
+  18. -fipa-cp
+  19. -fipa-cp-clone
+  20. -flive-range-shrinkage
+  21. -fmove-loop-invariants
+  22. -fomit-frame-pointer
+  23. -foptimize-sibling-calls
+  24. -fpeel-loops
+  25. -frename-registers
+  26. -frerun-cse-after-loop
+  27. -fsched-spec
+  28. -fschedule-insns
+  29. -fshort-enums
+  30. -fsplit-paths
+  31. -fstrict-aliasing
+  32. -ftree-bit-ccp
+  33. -ftree-ch
+  34. -ftree-copy-prop
+  35. -ftree-dominator-opts
+  36. -ftree-forwprop
+  37. -ftree-fre
+  38. -ftree-loop-optimize
+  39. -ftree-loop-vectorize
+  40. -ftree-pre
+  41. -ftree-slp-vectorize
+  42. -ftree-sra
+  43. -ftree-ter
+  44. -funroll-all-loops
+  45. -funsafe-math-optimizations
+  46. -funwind-tables
+
+💻 Optimal Compilation Command:
+gcc -O3 uploads/0162b435-b085-41b5-9772-994d79fedded_matrix_multiply.c -falign-jumps -falign-labels -falign-loops -fassociative-math -fbranch-probabilities -fcaller-saves -fcode-hoisting -fcompare-elim -fcrossjumping -fcse-follow-jumps -fdce -fdelayed-branch -fdevirtualize -fearly-inlining -fexceptions -ffast-math -ffloat-store -fipa-cp -fipa-cp-clone -flive-range-shrinkage -fmove-loop-invariants -fomit-frame-pointer -foptimize-sibling-calls -fpeel-loops -frename-registers -frerun-cse-after-loop -fsched-spec -fschedule-insns -fshort-enums -fsplit-paths -fstrict-aliasing -ftree-bit-ccp -ftree-ch -ftree-copy-prop -ftree-dominator-opts -ftree-forwprop -ftree-fre -ftree-loop-optimize -ftree-loop-vectorize -ftree-pre -ftree-slp-vectorize -ftree-sra -ftree-ter -funroll-all-loops -funsafe-math-optimizations -funwind-tables -o optimized_xgb
+
+🔨 Creating optimized binary...
+✅ Optimized binary created: ./optimized_xgb
+Results saved to xgboost_results.json
+
+✅ XGBOOST Complete: 0.001466s in 8.83s
+
+================================================================================
+📊 COMPREHENSIVE COMPARISON REPORT
+================================================================================
+
+1️⃣  EXECUTION TIME COMPARISON
+--------------------------------------------------------------------------------
+Method               | Time (s)        | Speedup vs -O3       | Rank      
+--------------------------------------------------------------------------------
+FOGA                 | 0.001416        | +10.77%              | #1
+HBRF                 | 0.001447        | +8.82%               | #2
+XGBOOST              | 0.001466        | +7.65%               | #3
+-O3                  | 0.001587        | +0.00%               | #4
+-O2                  | 0.001733        | -9.21%               | #5
+-O1                  | 0.001842        | -16.06%              | #6
+
+2️⃣  OPTIMIZATION TIME COMPARISON
+--------------------------------------------------------------------------------
+Method               | Opt. Time (s)   | Evaluations     | Eval/sec  
+--------------------------------------------------------------------------------
+FOGA                 | 182.38          | 10              | 0.05      
+HBRF                 | 30.16           | 170             | 5.64      
+XGBOOST              | 8.83            | 100             | 11.32     
+
+3️⃣  EFFICIENCY METRICS
+--------------------------------------------------------------------------------
+FOGA Improvement over -O3: +10.77%
+HBRF Improvement over -O3: +8.82%
+XGBOOST Improvement over -O3: +7.65%
+
+4️⃣  WINNER ANALYSIS
+--------------------------------------------------------------------------------
+🏆 WINNER: FOGA
+   FOGA achieved 2.14% better execution time vs second best
+
+📄 Comparison results saved to: comparison_results.json
+
+================================================================================
+📝 DETAILED METRICS
+================================================================================
+
+--- FOGA ---
+BEST EXECUTION TIME: 0.0014157295227050781
+OPTIMIZATION TIME: 182.3761s
+TOTAL EVALUATIONS: 2770
+ENABLED FLAGS: [
+  "-faggressive-loop-optimizations",
+  "-fassociative-math",
+  "-fcaller-saves",
+  "-fcombine-stack-adjustments",
+  "-fcx-limited-range",
+  "-fdelete-null-pointer-checks",
+  "-fdse",
+  "-fexceptions",
+  "-fipa-cp-clone",
+  "-fipa-icf",
+  "-fipa-modref",
+  "-fipa-pure-const",
+  "-fipa-sra",
+  "-fjump-tables",
+  "-flive-range-shrinkage",
+  "-fmove-loop-invariants",
+  "-fpeel-loops",
+  "-free",
+  "-frename-registers",
+  "-frerun-cse-after-loop",
+  "-fsched-spec",
+  "-fsection-anchors",
+  "-fsplit-paths",
+  "-fstrict-aliasing",
+  "-fthread-jumps",
+  "-ftrapv",
+  "-ftree-dce",
+  "-ftree-dominator-opts",
+  "-ftree-dse",
+  "-ftree-forwprop",
+  "-ftree-fre",
+  "-ftree-loop-optimize",
+  "-ftree-pre",
+  "-ftree-vrp",
+  "-funswitch-loops",
+  "-fweb"
+]
+
+--- HBRF ---
+BEST EXECUTION TIME: 0.0014469623565673828
+OPTIMIZATION TIME: 30.1561s
+TOTAL EVALUATIONS: 170
+ENABLED FLAGS: [
+  "-falign-functions",
+  "-falign-loops",
+  "-fassociative-math",
+  "-fauto-inc-dec",
+  "-fcode-hoisting",
+  "-fcombine-stack-adjustments",
+  "-fcompare-elim",
+  "-fcprop-registers",
+  "-fcse-follow-jumps",
+  "-fcx-limited-range",
+  "-fdse",
+  "-fexceptions",
+  "-fipa-cp-clone",
+  "-fipa-icf",
+  "-fipa-sra",
+  "-fmove-loop-invariants",
+  "-fomit-frame-pointer",
+  "-free",
+  "-frerun-cse-after-loop",
+  "-frounding-math",
+  "-fschedule-insns",
+  "-fsection-anchors",
+  "-fsplit-paths",
+  "-fthread-jumps",
+  "-ftrapv",
+  "-ftree-ccp",
+  "-ftree-dce",
+  "-ftree-dominator-opts",
+  "-ftree-forwprop",
+  "-ftree-loop-optimize",
+  "-ftree-pre",
+  "-ftree-sra",
+  "-ftree-ter",
+  "-funswitch-loops",
+  "-funwind-tables",
+  "-fvar-tracking-assignments",
+  "-fweb",
+  "-fwrapv"
+]
+
+--- XGBOOST ---
+BEST EXECUTION TIME: 0.0014655590057373047
+OPTIMIZATION TIME: 8.8313s
+TOTAL EVALUATIONS: 100
+ENABLED FLAGS: [
+  "-falign-jumps",
+  "-falign-labels",
+  "-falign-loops",
+  "-fassociative-math",
+  "-fbranch-probabilities",
+  "-fcaller-saves",
+  "-fcode-hoisting",
+  "-fcompare-elim",
+  "-fcrossjumping",
+  "-fcse-follow-jumps",
+  "-fdce",
+  "-fdelayed-branch",
+  "-fdevirtualize",
+  "-fearly-inlining",
+  "-fexceptions",
+  "-ffast-math",
+  "-ffloat-store",
+  "-fipa-cp",
+  "-fipa-cp-clone",
+  "-flive-range-shrinkage",
+  "-fmove-loop-invariants",
+  "-fomit-frame-pointer",
+  "-foptimize-sibling-calls",
+  "-fpeel-loops",
+  "-frename-registers",
+  "-frerun-cse-after-loop",
+  "-fsched-spec",
+  "-fschedule-insns",
+  "-fshort-enums",
+  "-fsplit-paths",
+  "-fstrict-aliasing",
+  "-ftree-bit-ccp",
+  "-ftree-ch",
+  "-ftree-copy-prop",
+  "-ftree-dominator-opts",
+  "-ftree-forwprop",
+  "-ftree-fre",
+  "-ftree-loop-optimize",
+  "-ftree-loop-vectorize",
+  "-ftree-pre",
+  "-ftree-slp-vectorize",
+  "-ftree-sra",
+  "-ftree-ter",
+  "-funroll-all-loops",
+  "-funsafe-math-optimizations",
+  "-funwind-tables"
+]
+
+================================================================================
+
+📋 Detailed Results (JSON Format):
+{
+  "FOGA": {
+    "best_time": 0.0014157295227050781,
+    "total_evaluations": 2770,
+    "enabled_flags": [
+      "-faggressive-loop-optimizations",
+      "-fassociative-math",
+      "-fcaller-saves",
+      "-fcombine-stack-adjustments",
+      "-fcx-limited-range",
+      "-fdelete-null-pointer-checks",
+      "-fdse",
+      "-fexceptions",
+      "-fipa-cp-clone",
+      "-fipa-icf",
+      "-fipa-modref",
+      "-fipa-pure-const",
+      "-fipa-sra",
+      "-fjump-tables",
+      "-flive-range-shrinkage",
+      "-fmove-loop-invariants",
+      "-fpeel-loops",
+      "-free",
+      "-frename-registers",
+      "-frerun-cse-after-loop",
+      "-fsched-spec",
+      "-fsection-anchors",
+      "-fsplit-paths",
+      "-fstrict-aliasing",
+      "-fthread-jumps",
+      "-ftrapv",
+      "-ftree-dce",
+      "-ftree-dominator-opts",
+      "-ftree-dse",
+      "-ftree-forwprop",
+      "-ftree-fre",
+      "-ftree-loop-optimize",
+      "-ftree-pre",
+      "-ftree-vrp",
+      "-funswitch-loops",
+      "-fweb"
+    ]
+  },
+  "HBRF": {
+    "best_time": 0.0014469623565673828,
+    "total_evaluations": 170,
+    "enabled_flags": [
+      "-falign-functions",
+      "-falign-loops",
+      "-fassociative-math",
+      "-fauto-inc-dec",
+      "-fcode-hoisting",
+      "-fcombine-stack-adjustments",
+      "-fcompare-elim",
+      "-fcprop-registers",
+      "-fcse-follow-jumps",
+      "-fcx-limited-range",
+      "-fdse",
+      "-fexceptions",
+      "-fipa-cp-clone",
+      "-fipa-icf",
+      "-fipa-sra",
+      "-fmove-loop-invariants",
+      "-fomit-frame-pointer",
+      "-free",
+      "-frerun-cse-after-loop",
+      "-frounding-math",
+      "-fschedule-insns",
+      "-fsection-anchors",
+      "-fsplit-paths",
+      "-fthread-jumps",
+      "-ftrapv",
+      "-ftree-ccp",
+      "-ftree-dce",
+      "-ftree-dominator-opts",
+      "-ftree-forwprop",
+      "-ftree-loop-optimize",
+      "-ftree-pre",
+      "-ftree-sra",
+      "-ftree-ter",
+      "-funswitch-loops",
+      "-funwind-tables",
+      "-fvar-tracking-assignments",
+      "-fweb",
+      "-fwrapv"
+    ]
+  },
+  "XGBOOST": {
+    "best_time": 0.0014655590057373047,
+    "total_evaluations": 100,
+    "enabled_flags": [
+      "-falign-jumps",
+      "-falign-labels",
+      "-falign-loops",
+      "-fassociative-math",
+      "-fbranch-probabilities",
+      "-fcaller-saves",
+      "-fcode-hoisting",
+      "-fcompare-elim",
+      "-fcrossjumping",
+      "-fcse-follow-jumps",
+      "-fdce",
+      "-fdelayed-branch",
+      "-fdevirtualize",
+      "-fearly-inlining",
+      "-fexceptions",
+      "-ffast-math",
+      "-ffloat-store",
+      "-fipa-cp",
+      "-fipa-cp-clone",
+      "-flive-range-shrinkage",
+      "-fmove-loop-invariants",
+      "-fomit-frame-pointer",
+      "-foptimize-sibling-calls",
+      "-fpeel-loops",
+      "-frename-registers",
+      "-frerun-cse-after-loop",
+      "-fsched-spec",
+      "-fschedule-insns",
+      "-fshort-enums",
+      "-fsplit-paths",
+      "-fstrict-aliasing",
+      "-ftree-bit-ccp",
+      "-ftree-ch",
+      "-ftree-copy-prop",
+      "-ftree-dominator-opts",
+      "-ftree-forwprop",
+      "-ftree-fre",
+      "-ftree-loop-optimize",
+      "-ftree-loop-vectorize",
+      "-ftree-pre",
+      "-ftree-slp-vectorize",
+      "-ftree-sra",
+      "-ftree-ter",
+      "-funroll-all-loops",
+      "-funsafe-math-optimizations",
+      "-funwind-tables"
+    ]
+  }
+}
+📊 Enhanced visualization saved to: enhanced_comparison_chart.png
+
+================================================================================
+✅ COMPARISON COMPLETE
+================================================================================

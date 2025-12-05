@@ -128,6 +128,18 @@ class OptimizerComparison:
             }
 
             print(f"\n✅ FOGA Complete: {best_time:.6f}s in {total_time:.2f}s")
+            
+            # Load detailed results to display requested metrics
+            if os.path.exists('foga_results.json'):
+                try:
+                    with open('foga_results.json', 'r') as f:
+                        foga_data = json.load(f)
+                        print(f"BEST EXECUTION TIME: {foga_data.get('best_time', 'N/A')}")
+                        print(f"TOTAL EVALUATIONS: {foga_data.get('total_evaluations', 'N/A')}")
+                        print(f"ENABLED FLAGS: {json.dumps(foga_data.get('enabled_flags', []), indent=2)}")
+                except Exception as e:
+                    print(f"Could not read detailed FOGA results: {e}")
+
             return best_time, total_time
 
         except subprocess.TimeoutExpired:
@@ -196,6 +208,20 @@ class OptimizerComparison:
             }
 
             print(f"\n✅ HBRF Complete: {best_time:.6f}s in {total_time:.2f}s")
+            
+            # Display requested metrics
+            if os.path.exists('hbrf_results.json'):
+                try:
+                    # We already loaded hbrf_data above if it existed, but let's reload or use what we have if we kept it.
+                    # The code above loaded it into local vars but didn't keep the dict. Let's reload to be safe and clean.
+                    with open('hbrf_results.json', 'r') as f:
+                        hbrf_data = json.load(f)
+                        print(f"BEST EXECUTION TIME: {hbrf_data.get('best_time', 'N/A')}")
+                        print(f"TOTAL EVALUATIONS: {hbrf_data.get('total_evaluations', 'N/A')}")
+                        print(f"ENABLED FLAGS: {json.dumps(hbrf_data.get('enabled_flags', []), indent=2)}")
+                except Exception as e:
+                    print(f"Could not read detailed HBRF results: {e}")
+            
             return best_time, total_time
 
         except subprocess.TimeoutExpired:
@@ -256,6 +282,18 @@ class OptimizerComparison:
             }
 
             print(f"\n✅ XGBOOST Complete: {best_time:.6f}s in {total_time:.2f}s")
+            
+            # Display requested metrics
+            if os.path.exists('xgboost_results.json'):
+                try:
+                    with open('xgboost_results.json', 'r') as f:
+                        xgb_data = json.load(f)
+                        print(f"BEST EXECUTION TIME: {xgb_data.get('best_time', 'N/A')}")
+                        print(f"TOTAL EVALUATIONS: {xgb_data.get('total_evaluations', 'N/A')}")
+                        print(f"ENABLED FLAGS: {json.dumps(xgb_data.get('enabled_flags', []), indent=2)}")
+                except Exception as e:
+                    print(f"Could not read detailed XGBoost results: {e}")
+            
             return best_time, total_time
 
         except subprocess.TimeoutExpired:
