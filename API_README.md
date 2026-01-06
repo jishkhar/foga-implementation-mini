@@ -1,6 +1,6 @@
 # Compiler Optimization API Documentation
 
-A FastAPI-based REST API for running compiler optimization tools including FOGA (Flag Optimization with Genetic Algorithm), HBRF (Hybrid Bayesian-Random Forest), XGBoost optimizer, and comparison tools.
+A FastAPI-based REST API for running compiler optimization tools including AutoFlag (Flag Optimization with Genetic Algorithm), HBRF (Hybrid Bayesian-Random Forest), XGBoost optimizer, and comparison tools.
 
 ## 🚀 Quick Start
 
@@ -40,7 +40,7 @@ Returns API information and available endpoints.
   "message": "Compiler Optimization API",
   "version": "1.0.0",
   "endpoints": {
-    "foga": "/optimize/foga",
+    "autoflag": "/optimize/autoflag",
     "hbrf": "/optimize/hbrf",
     "xgboost": "/optimize/xgboost",
     "compare": "/optimize/compare",
@@ -53,9 +53,9 @@ Returns API information and available endpoints.
 
 ---
 
-### Run FOGA Optimization
+### Run AutoFlag Optimization
 ```http
-POST /optimize/foga
+POST /optimize/autoflag
 ```
 
 Run Flag Optimization with Genetic Algorithm.
@@ -66,7 +66,7 @@ Run Flag Optimization with Genetic Algorithm.
 
 **Example using curl:**
 ```bash
-curl -X POST "http://localhost:8000/optimize/foga" \
+curl -X POST "http://localhost:8000/optimize/autoflag" \
   -F "source_file=@matrix_multiply.c" \
   -F "test_input_file=@input.txt"
 ```
@@ -80,7 +80,7 @@ files = {
     'test_input_file': open('input.txt', 'rb')  # optional
 }
 
-response = requests.post('http://localhost:8000/optimize/foga', files=files)
+response = requests.post('http://localhost:8000/optimize/autoflag', files=files)
 job = response.json()
 print(f"Job ID: {job['job_id']}")
 ```
@@ -90,7 +90,7 @@ print(f"Job ID: {job['job_id']}")
 {
   "job_id": "550e8400-e29b-41d4-a716-446655440000",
   "status": "pending",
-  "message": "FOGA optimization job created successfully"
+  "message": "AutoFlag optimization job created successfully"
 }
 ```
 
@@ -148,7 +148,7 @@ curl -X POST "http://localhost:8000/optimize/xgboost" \
 POST /optimize/compare
 ```
 
-Run all three optimizers (FOGA, HBRF, XGBoost) and generate comprehensive comparison.
+Run all three optimizers (AutoFlag, HBRF, XGBoost) and generate comprehensive comparison.
 
 **Parameters:**
 - `source_file` (file, required): C/C++ source code file
@@ -218,11 +218,11 @@ Get detailed results of a completed job.
 curl "http://localhost:8000/jobs/550e8400-e29b-41d4-a716-446655440000/result"
 ```
 
-**Response (FOGA/HBRF/XGBoost):**
+**Response (AutoFlag/HBRF/XGBoost):**
 ```json
 {
   "job_id": "550e8400-e29b-41d4-a716-446655440000",
-  "optimizer": "foga",
+  "optimizer": "autoflag",
   "output": "... full console output ...",
   "result": {
     "best_time": 0.123456,
@@ -250,7 +250,7 @@ curl "http://localhost:8000/jobs/550e8400-e29b-41d4-a716-446655440000/result"
       "-O2": 0.567,
       "-O3": 0.456
     },
-    "FOGA": {
+    "AutoFlag": {
       "best_time": 0.412,
       "total_time": 123.45,
       "evaluations": 2770
@@ -267,7 +267,7 @@ curl "http://localhost:8000/jobs/550e8400-e29b-41d4-a716-446655440000/result"
     },
     "winner": "HBRF",
     "improvements": {
-      "FOGA_vs_O3": -9.65,
+      "AutoFlag_vs_O3": -9.65,
       "HBRF_vs_O3": -12.72,
       "XGBOOST_vs_O3": -11.18
     }
@@ -286,7 +286,7 @@ List all jobs with optional filtering.
 
 **Query Parameters:**
 - `status` (optional): Filter by status (`pending`, `running`, `completed`, `failed`)
-- `optimizer` (optional): Filter by optimizer type (`foga`, `hbrf_optimizer`, `xgboost_optimizer`, `compare_optimizers`)
+- `optimizer` (optional): Filter by optimizer type (`autoflag`, `hbrf_optimizer`, `xgboost_optimizer`, `compare_optimizers`)
 
 **Examples:**
 ```bash
@@ -296,8 +296,8 @@ curl "http://localhost:8000/jobs"
 # Get running jobs
 curl "http://localhost:8000/jobs?status=running"
 
-# Get completed FOGA jobs
-curl "http://localhost:8000/jobs?optimizer=foga&status=completed"
+# Get completed AutoFlag jobs
+curl "http://localhost:8000/jobs?optimizer=autoflag&status=completed"
 ```
 
 **Response:**
@@ -308,7 +308,7 @@ curl "http://localhost:8000/jobs?optimizer=foga&status=completed"
     {
       "job_id": "550e8400-e29b-41d4-a716-446655440000",
       "status": "completed",
-      "optimizer": "foga",
+      "optimizer": "autoflag",
       "created_at": "2025-12-03T10:30:00.000000",
       "started_at": "2025-12-03T10:30:01.000000",
       "completed_at": "2025-12-03T10:32:15.000000"
@@ -391,7 +391,7 @@ API_BASE = "http://localhost:8000"
 # 1. Submit optimization job
 with open('matrix_multiply.c', 'rb') as f:
     files = {'source_file': f}
-    response = requests.post(f"{API_BASE}/optimize/foga", files=files)
+    response = requests.post(f"{API_BASE}/optimize/autoflag", files=files)
     job_id = response.json()['job_id']
     print(f"Job submitted: {job_id}")
 
@@ -438,7 +438,7 @@ async function optimizeCode() {
   form.append('source_file', fs.createReadStream('matrix_multiply.c'));
   
   const submitResponse = await axios.post(
-    `${API_BASE}/optimize/foga`,
+    `${API_BASE}/optimize/autoflag`,
     form,
     { headers: form.getHeaders() }
   );
@@ -562,7 +562,7 @@ docker run -p 8000:8000 compiler-optimizer-api
 ## 📖 Additional Resources
 
 - [FastAPI Documentation](https://fastapi.tiangolo.com/)
-- [FOGA Paper](https://ieeexplore.ieee.org/document/example)
+- [AutoFlag Paper](https://ieeexplore.ieee.org/document/example)
 - [GCC Optimization Options](https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html)
 
 ---

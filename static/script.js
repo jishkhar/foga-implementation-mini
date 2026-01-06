@@ -228,7 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // Add optimizers
-            if (r.FOGA) methods.push({ name: 'FOGA', time: r.FOGA.best_time });
+            if (r.AutoFlag) methods.push({ name: 'AutoFlag', time: r.AutoFlag.best_time });
             if (r.HBRF) methods.push({ name: 'HBRF', time: r.HBRF.best_time });
             if (r.XGBOOST) methods.push({ name: 'XGBOOST', time: r.XGBOOST.best_time });
 
@@ -381,8 +381,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
-        // FOGA Chart
-        if (job.optimizer === 'foga' && job.result.history && job.result.history.length > 0) {
+        // AutoFlag Chart
+        if (job.optimizer === 'autoflag' && job.result.history && job.result.history.length > 0) {
             chartsContainer.style.display = 'block';
             // Resize container for better visibility
             canvas.style.height = '400px';
@@ -430,7 +430,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         ...commonOptions.plugins,
                         title: {
                             display: true,
-                            text: 'FOGA: Genetic Algorithm Progress',
+                            text: 'AutoFlag: Genetic Algorithm Progress',
                             color: '#ecf0f1',
                             font: { size: 16, weight: 'bold' }
                         }
@@ -499,7 +499,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 '-O1': '#95a5a6',
                 '-O2': '#7f8c8d',
                 '-O3': '#34495e',
-                'FOGA': '#2ecc71',
+                'AutoFlag': '#2ecc71',
                 'HBRF': '#9b59b6',
                 'XGBOOST': '#e67e22'
             };
@@ -516,11 +516,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            if (r.FOGA && r.FOGA.best_time !== Infinity) {
-                labels.push('FOGA');
-                data.push(r.FOGA.best_time);
-                backgroundColors.push(methodColors['FOGA']);
-                borderColors.push(methodColors['FOGA']);
+            if (r.AutoFlag && r.AutoFlag.best_time !== Infinity) {
+                labels.push('AutoFlag');
+                data.push(r.AutoFlag.best_time);
+                backgroundColors.push(methodColors['AutoFlag']);
+                borderColors.push(methodColors['AutoFlag']);
             }
             if (r.HBRF && r.HBRF.best_time !== Infinity) {
                 labels.push('HBRF');

@@ -7,7 +7,7 @@ import signal
 import json
 from contextlib import contextmanager
 
-# --- Configuration based on FOGA Paper (Table II) ---
+# --- Configuration based on AutoFlag Paper (Table II) ---
 
 GCC_FLAGS = [
     "-faggressive-loop-optimizations", "-falign-functions", "-falign-jumps",
@@ -75,7 +75,7 @@ class Individual:
         chromosome = [random.randint(0, 1) for _ in range(len(GCC_FLAGS))]
         return cls(chromosome)
 
-class FOGA:
+class AutoFlag:
     """The main class to run the Flag Optimization with Genetic Algorithm."""
 
     def __init__(self, source_file_path, test_input=None):
@@ -225,7 +225,7 @@ class FOGA:
 
     def run(self):
         """Executes the main GA loop."""
-        print("🚀 Starting FOGA optimization...")
+        print("🚀 Starting AutoFlag optimization...")
         print("Press Ctrl+C to stop early and get the best result so far\n")
         
         generations_without_improvement = 0
@@ -321,7 +321,7 @@ class FOGA:
                 os.remove(temp_file)
         
     def _benchmark_and_compare(self):
-        """Benchmarks standard GCC/G++ optimization levels and compares with FOGA's result."""
+        """Benchmarks standard GCC/G++ optimization levels and compares with AutoFlag's result."""
         print("\n" + "-"*60)
         print("📊 BENCHMARKING COMPARISON")
         print("-"*60)
@@ -372,7 +372,7 @@ class FOGA:
                     os.remove(output_binary)
 
         # Prepare data for the table
-        foga_time = self.best_individual.fitness
+        autoflag_time = self.best_individual.fitness
         o3_time = benchmark_results.get('-O3', float('inf'))
 
         # Helper for calculating improvement
@@ -393,9 +393,9 @@ class FOGA:
             improvement_str = calc_improvement(o3_time, time_val)
             print(f"| {level:<15} | {time_str:<20} | {improvement_str:<22} |")
 
-        foga_time_str = f"{foga_time:.6f}" if foga_time != float('inf') else "Failed"
-        foga_improvement_str = calc_improvement(o3_time, foga_time)
-        print(f"| {'FOGA (Best)':<15} | {foga_time_str:<20} | {foga_improvement_str:<22} |")
+        autoflag_time_str = f"{autoflag_time:.6f}" if autoflag_time != float('inf') else "Failed"
+        autoflag_improvement_str = calc_improvement(o3_time, autoflag_time)
+        print(f"| {'AutoFlag (Best)':<15} | {autoflag_time_str:<20} | {autoflag_improvement_str:<22} |")
         print("="*60)
         
         # Display flags comparison
@@ -413,20 +413,20 @@ class FOGA:
         o1_flags = set(self._get_optimization_flags('-O1'))
         o2_flags = set(self._get_optimization_flags('-O2'))
         o3_flags = set(self._get_optimization_flags('-O3'))
-        foga_flags = set([GCC_FLAGS[i] for i, gene in enumerate(self.best_individual.chromosome) if gene == 1])
+        autoflag_flags = set([GCC_FLAGS[i] for i, gene in enumerate(self.best_individual.chromosome) if gene == 1])
         
         print(f"\n📊 Flag Count Summary:")
         print(f"  -O1:        {len(o1_flags)} flags enabled")
         print(f"  -O2:        {len(o2_flags)} flags enabled")
         print(f"  -O3:        {len(o3_flags)} flags enabled")
-        print(f"  FOGA:       {len(foga_flags)} flags enabled")
+        print(f"  AutoFlag:   {len(autoflag_flags)} flags enabled")
         
         # Find unique flags
-        all_flags = o1_flags | o2_flags | o3_flags | foga_flags
+        all_flags = o1_flags | o2_flags | o3_flags | autoflag_flags
         
         print(f"\n📋 Detailed Flag Breakdown:")
         print("-"*80)
-        print(f"{'Flag':<45} | {'O1':<5} | {'O2':<5} | {'O3':<5} | {'FOGA':<5}")
+        print(f"{'Flag':<45} | {'O1':<5} | {'O2':<5} | {'O3':<5} | {'AutoFlag':<5}")
         print("-"*80)
         
         # Sort flags alphabetically for easier reading
@@ -434,25 +434,25 @@ class FOGA:
             o1_mark = "✓" if flag in o1_flags else "✗"
             o2_mark = "✓" if flag in o2_flags else "✗"
             o3_mark = "✓" if flag in o3_flags else "✗"
-            foga_mark = "✓" if flag in foga_flags else "✗"
+            autoflag_mark = "✓" if flag in autoflag_flags else "✗"
             
-            print(f"{flag:<45} | {o1_mark:^5} | {o2_mark:^5} | {o3_mark:^5} | {foga_mark:^5}")
+            print(f"{flag:<45} | {o1_mark:^5} | {o2_mark:^5} | {o3_mark:^5} | {autoflag_mark:^5}")
         
         print("-"*80)
         
-        # Show FOGA-unique flags
-        foga_unique = foga_flags - o3_flags
-        o3_missing = o3_flags - foga_flags
+        # Show AutoFlag-unique flags
+        autoflag_unique = autoflag_flags - o3_flags
+        o3_missing = o3_flags - autoflag_flags
         
-        if foga_unique:
-            print(f"\n✨ FOGA-Specific Flags (not in -O3): {len(foga_unique)}")
-            for i, flag in enumerate(sorted(foga_unique), 1):
+        if autoflag_unique:
+            print(f"\n✨ AutoFlag-Specific Flags (not in -O3): {len(autoflag_unique)}")
+            for i, flag in enumerate(sorted(autoflag_unique), 1):
                 print(f"  {i:2d}. {flag}")
         else:
-            print(f"\n✨ FOGA-Specific Flags: None (FOGA uses a subset of -O3)")
+            print(f"\n✨ AutoFlag-Specific Flags: None (AutoFlag uses a subset of -O3)")
         
         if o3_missing:
-            print(f"\n🔍 -O3 Flags Excluded by FOGA: {len(o3_missing)}")
+            print(f"\n🔍 -O3 Flags Excluded by AutoFlag: {len(o3_missing)}")
             for i, flag in enumerate(sorted(o3_missing), 1):
                 print(f"  {i:2d}. {flag}")
         
@@ -494,9 +494,9 @@ class FOGA:
                 'enabled_flags': enabled_flags
             }
             
-            with open('foga_results.json', 'w') as f:
+            with open('autoflag_results.json', 'w') as f:
                 json.dump(results, f, indent=2)
-            print("📄 Results saved to: foga_results.json")
+            print("📄 Results saved to: autoflag_results.json")
 
             # Add the comparison table at the end
             self._benchmark_and_compare()
@@ -507,9 +507,9 @@ class FOGA:
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Usage: python foga.py <path_to_c_or_cpp_file> [test_input_file]")
-        print("Example: python foga.py matrix_multiply.c")
-        print("         python foga.py program.c input.txt")
+        print("Usage: python autoflag.py <path_to_c_or_cpp_file> [test_input_file]")
+        print("Example: python autoflag.py matrix_multiply.c")
+        print("         python autoflag.py program.c input.txt")
         sys.exit(1)
     
     source_file = sys.argv[1]
@@ -524,8 +524,8 @@ if __name__ == "__main__":
             print(f"Using test input from: {input_file}")
     
     try:
-        foga_optimizer = FOGA(source_file, test_input)
-        foga_optimizer.run()
+        autoflag_optimizer = AutoFlag(source_file, test_input)
+        autoflag_optimizer.run()
     except Exception as e:
         print(f"\n❌ Error: {e}")
         sys.exit(1)

@@ -43,9 +43,9 @@ Start the API server:
 Open the frontend: Navigate to http://localhost:8000 in your web browser.
 
 Run a benchmark:
-
+-falign-jumps -fcompare-elim -fdelayed-branch -fdse -ffloat-store -fipa-pure-const -fjump-tables -fmove-loop-invariants -fschedule-insns -ftree-copy-prop -ftree-dce -ftree-ter -ftree-vrp
 Select a file (e.g., 
 matrix_multiply.c
 ).
-Choose an optimizer (e.g., FOGA).
+Choose an optimizer (e.g., AutoFlag).
 Click "Run Optimization".

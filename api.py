@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-FastAPI endpoints for compiler optimization tools (FOGA, HBRF, XGBoost, and Compare)
+FastAPI endpoints for compiler optimization tools (AutoFlag, HBRF, XGBoost, and Compare)
 Provides RESTful API for running optimizations and retrieving results
 """
 
@@ -22,7 +22,7 @@ from pathlib import Path
 # Initialize FastAPI app
 app = FastAPI(
     title="Compiler Optimization API",
-    description="API for FOGA, HBRF, XGBoost optimizers and comparison tools",
+    description="API for AutoFlag, HBRF, XGBoost optimizers and comparison tools",
     version="1.0.0"
 )
 
@@ -187,10 +187,10 @@ def parse_optimizer_output(optimizer: str, output: str) -> Dict:
     }
     
     try:
-        if optimizer in ["foga", "hbrf_optimizer", "xgboost_optimizer"]:
+        if optimizer in ["autoflag", "hbrf_optimizer", "xgboost_optimizer"]:
             # Try to load JSON results file
             json_files = {
-                "foga": "foga_results.json",
+                "autoflag": "autoflag_results.json",
                 "hbrf_optimizer": "hbrf_results.json",
                 "xgboost_optimizer": "xgboost_results.json"
             }
@@ -206,8 +206,8 @@ def parse_optimizer_output(optimizer: str, output: str) -> Dict:
             # Parse from output as fallback and for time-series data
             history = []
             
-            if optimizer == "foga":
-                # FOGA: Gen  1 | Valid: ... | Best: ... | Avg: ...
+            if optimizer == "autoflag":
+                # AutoFlag: Gen  1 | Valid: ... | Best: ... | Avg: ...
                 for line in output.split('\n'):
                     if line.strip().startswith('Gen') and '| Best:' in line:
                         try:
@@ -235,8 +235,7 @@ def parse_optimizer_output(optimizer: str, output: str) -> Dict:
                     # We need lines that show execution time or new best
                     # The script prints "Sampling ...", then nothing until next line?
                     # Actually HBRF script prints "Sampling i/N..." then "Evaluate..." inside evaluate_configuration?
-                    # Looking at hbrf_optimizer.py, it prints "Sampling i/N..." then nothing else per sample unless we change it.
-                    # Wait, HBRF script prints: "Sampling 1/100..." then updates line.
+                    # Looking at hbrf_optimizer.py, it prints "Sampling i/N..." then updates line.
                     # It doesn't print the time for each sample in the log shown in `view_file`.
                     # But it DOES print "Best time so far: ..." after Phase 1.
                     
@@ -321,7 +320,7 @@ def parse_optimizer_output(optimizer: str, output: str) -> Dict:
                         # Fallback: try to find the best time among all
                         best_t = float('inf')
                         best_method = None
-                        for m in ['FOGA', 'HBRF', 'XGBOOST']:
+                        for m in ['AutoFlag', 'HBRF', 'XGBOOST']:
                             if m in comp_data:
                                 t = comp_data[m].get('best_time', float('inf'))
                                 if t < best_t:
@@ -366,14 +365,14 @@ async def read_index():
     return FileResponse('static/index.html')
 
 
-@app.post("/optimize/foga", response_model=JobResponse)
-async def optimize_foga(
+@app.post("/optimize/autoflag", response_model=JobResponse)
+async def optimize_autoflag(
     background_tasks: BackgroundTasks,
     source_file: UploadFile = File(...),
     test_input_file: Optional[UploadFile] = File(None)
 ):
     """
-    Run FOGA (Flag Optimization with Genetic Algorithm) optimizer
+    Run AutoFlag (Flag Optimization with Genetic Algorithm) optimizer
     
     - **source_file**: C/C++ source code file
     - **test_input_file**: Optional test input for the program
@@ -392,13 +391,13 @@ async def optimize_foga(
                 shutil.copyfileobj(test_input_file.file, f)
         
         # Create job
-        job_id = create_job("foga", str(source_path))
+        job_id = create_job("autoflag", str(source_path))
         
         # Start optimization in background
         background_tasks.add_task(
             run_optimizer_task,
             job_id,
-            "foga",
+            "autoflag",
             str(source_path),
             str(test_input_path) if test_input_path else None
         )
@@ -406,7 +405,7 @@ async def optimize_foga(
         return JobResponse(
             job_id=job_id,
             status="pending",
-            message="FOGA optimization job created successfully"
+            message="AutoFlag optimization job created successfully"
         )
     
     except Exception as e:
@@ -514,7 +513,7 @@ async def optimize_compare(
     test_input_file: Optional[UploadFile] = File(None)
 ):
     """
-    Run comparison of all optimizers (FOGA, HBRF, XGBoost)
+    Run comparison of all optimizers (AutoFlag, HBRF, XGBoost)
     
     - **source_file**: C/C++ source code file
     - **test_input_file**: Optional test input for the program
@@ -655,7 +654,7 @@ async def download_optimized_binary(job_id: str):
     
     # Look for optimized binary based on optimizer type
     binary_names = {
-        "foga": "optimized_binary",
+        "autoflag": "optimized_binary",
         "hbrf_optimizer": "optimized_hbrf",
         "xgboost_optimizer": "optimized_xgboost"
     }
