@@ -60,3 +60,7 @@ coverage.xml
 
 # Misc
 *.lock-wscript
+
+# Project-specific runtime directories
+uploads/
+results/

@@ -116,7 +116,7 @@ def run_optimizer_task(job_id: str, optimizer: str, source_path: str, test_input
         update_job_status(job_id, "running")
         
         # Build command
-        cmd = ["python3", "-u", f"{optimizer}.py", source_path]
+        cmd = ["python3", "-u", f"scripts/{optimizer}.py", source_path]
         if test_input_path:
             cmd.append(test_input_path)
         
