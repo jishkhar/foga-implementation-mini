@@ -1,4 +1,4 @@
-# Compiler Optimization API
+# AutoFlag: Compiler Flag Optimizer using Genetic Algorithm
 
 A comprehensive compiler optimization platform that provides access to multiple state-of-the-art optimization algorithms through a RESTful API and modern web interface. Compare and benchmark different optimization strategies including AutoFlag (Genetic Algorithm), HBRF (Hybrid Bayesian-Random Forest), and XGBoost-based optimizers.
 
